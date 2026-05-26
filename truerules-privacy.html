@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad · TrueRules</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f8f5f0;
+      --text: #2d2a26;
+      --muted: #9a9080;
+      --accent: #c4955a;
+      --border: #ede8e0;
+      --white: #ffffff;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      padding: 0 16px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 0 80px;
+    }
+
+    /* Header */
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 48px;
+      display: inline-block;
+    }
+    .logo span:first-child { color: var(--text); }
+    .logo span:last-child { color: var(--accent); }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .date {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 40px 0;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      margin-top: 40px;
+    }
+
+    p {
+      color: var(--text);
+      margin-bottom: 14px;
+      font-weight: 300;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      font-weight: 300;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .highlight {
+      background: var(--white);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="logo"><span>True</span><span>Rules</span></div>
+
+    <h1>Política de Privacidad</h1>
+    <p class="date">Última actualización: mayo de 2026</p>
+
+    <div class="highlight">
+      TrueRules es una aplicación para jugadores de mesa que te permite digitalizar manuales de juego y consultar reglas mediante inteligencia artificial. Esta política explica qué datos recogemos, cómo los usamos y cuáles son tus derechos.
+    </div>
+
+    <div class="divider"></div>
+
+    <h2>1. Responsable del tratamiento</h2>
+    <p>
+      El responsable del tratamiento de tus datos personales es el desarrollador de TrueRules, contactable en:
+      <br /><a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>
+    </p>
+
+    <h2>2. Datos que recogemos</h2>
+    <p>TrueRules recoge únicamente los datos necesarios para el funcionamiento de la aplicación:</p>
+    <ul>
+      <li><strong>Cuenta de usuario:</strong> nombre y dirección de correo electrónico proporcionados al iniciar sesión con Google.</li>
+      <li><strong>Contenido del manual:</strong> imágenes y texto de las páginas que fotografías o subes para digitalizar tu manual de juego. Estos datos se almacenan localmente en tu dispositivo.</li>
+      <li><strong>Consultas al asistente:</strong> las preguntas que realizas sobre reglas se envían a nuestro servidor para generar la respuesta mediante IA. No se almacenan de forma permanente asociadas a tu identidad.</li>
+      <li><strong>Datos de uso:</strong> contadores de créditos consumidos (páginas OCR y consultas de chat) necesarios para gestionar el modelo de acceso.</li>
+    </ul>
+
+    <h2>3. Finalidad del tratamiento</h2>
+    <p>Usamos tus datos exclusivamente para:</p>
+    <ul>
+      <li>Autenticarte y gestionar tu cuenta de usuario.</li>
+      <li>Procesar las imágenes del manual mediante reconocimiento óptico de caracteres (OCR).</li>
+      <li>Responder tus consultas sobre reglas de juego mediante inteligencia artificial.</li>
+      <li>Gestionar el saldo de créditos y procesar compras dentro de la aplicación.</li>
+    </ul>
+
+    <h2>4. Proveedores de servicios</h2>
+    <p>TrueRules utiliza los siguientes servicios de terceros:</p>
+    <ul>
+      <li><strong>Supabase:</strong> autenticación y almacenamiento de datos de cuenta.</li>
+      <li><strong>Google Gemini:</strong> motor de inteligencia artificial para OCR y consultas de reglas.</li>
+      <li><strong>Vercel:</strong> infraestructura del servidor backend.</li>
+      <li><strong>RevenueCat:</strong> gestión de compras dentro de la aplicación.</li>
+    </ul>
+    <p>Cada uno de estos proveedores tiene sus propias políticas de privacidad y actúa como encargado del tratamiento conforme a los acuerdos suscritos.</p>
+
+    <h2>5. Almacenamiento de datos</h2>
+    <p>
+      El contenido que añades a tus juegos (imágenes de páginas, texto extraído, notas e historial de partidas) se almacena <strong>localmente en tu dispositivo</strong> mediante AsyncStorage. No se sube a ningún servidor externo salvo el texto necesario para procesar una consulta concreta.
+    </p>
+
+    <h2>6. Conservación de datos</h2>
+    <p>
+      Los datos de tu cuenta se conservan mientras mantengas una cuenta activa en TrueRules. Puedes solicitar la eliminación de tu cuenta y tus datos en cualquier momento escribiendo a <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.
+    </p>
+
+    <h2>7. Derechos del usuario</h2>
+    <p>De acuerdo con el Reglamento General de Protección de Datos (RGPD), tienes derecho a:</p>
+    <ul>
+      <li>Acceder a tus datos personales.</li>
+      <li>Rectificar datos inexactos.</li>
+      <li>Solicitar la supresión de tus datos.</li>
+      <li>Oponerte al tratamiento o solicitar su limitación.</li>
+      <li>Presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD).</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
+
+    <h2>8. Menores de edad</h2>
+    <p>
+      TrueRules no está dirigida a menores de 13 años. No recogemos conscientemente datos personales de menores. Si crees que un menor ha proporcionado sus datos, contáctanos para eliminarlos.
+    </p>
+
+    <h2>9. Cambios en esta política</h2>
+    <p>
+      Podemos actualizar esta política de privacidad ocasionalmente. Te notificaremos cualquier cambio relevante mediante la aplicación. El uso continuado de TrueRules tras la publicación de cambios implica tu aceptación.
+    </p>
+
+    <h2>10. Contacto</h2>
+    <p>
+      Si tienes cualquier pregunta sobre esta política de privacidad, puedes contactarnos en:<br />
+      <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>
+    </p>
+
+    <div class="footer">
+      <p>© 2026 TrueRules · <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
+    </div>
+
+  </div>
+</body>
+</html>
