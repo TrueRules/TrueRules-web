@@ -61,9 +61,9 @@
     <h2>3. Datos que recogemos</h2>
     <p>TrueRules recoge únicamente los datos necesarios para el funcionamiento de la aplicación:</p>
     <ul>
-      <li><strong>Cuenta de usuario:</strong> nombre y dirección de correo electrónico proporcionados al iniciar sesión con Google. Al solicitar la eliminación de la cuenta, el correo electrónico se transforma mediante un algoritmo criptográfico irreversible (hashing) con el único fin de evitar el abuso del sistema de créditos de prueba, eliminando los datos identificables directamente.</li>
-      <li><strong>Contenido del manual:</strong> imágenes y texto de las páginas que fotografías o subes para digitalizar tu manual. Estos datos se almacenan localmente en el dispositivo del usuario. Para su procesamiento mediante OCR o inteligencia artificial, se transmiten temporalmente a nuestros servidores y a los proveedores indicados en la sección 5, siendo tratados de forma temporal y eliminados o anonimizados tras su procesamiento, según las políticas de los proveedores.</li>
-      <li><strong>Consultas al asistente:</strong> las preguntas que realizas sobre reglas se transmiten a nuestro servidor para generar la respuesta mediante IA. Se procesan temporalmente de forma automatizada para proporcionar el servicio y garantizar la estabilidad y seguridad de la aplicación. Según las políticas del proveedor, no se utilizan para el entrenamiento de modelos de inteligencia artificial.</li>
+      <li><strong>Cuenta de usuario:</strong> nombre y dirección de correo electrónico proporcionados al iniciar sesión con Google.</li>
+      <li><strong>Contenido del manual:</strong> imágenes y texto de las páginas que fotografías o subes para digitalizar tu manual. Estos datos se almacenan localmente en tu dispositivo. Para su procesamiento, se transmiten temporalmente a nuestros servidores y son eliminados tras su procesamiento.</li>
+      <li><strong>Consultas al asistente:</strong> las preguntas que realizas sobre reglas se transmiten a nuestro servidor para generar la respuesta mediante IA. Se procesan de forma temporal y no se utilizan para fines distintos a la prestación del servicio.</li>
       <li><strong>Reconocimiento de voz:</strong> si utilizas el micrófono para dictar tus preguntas, el reconocimiento de voz se realiza íntegramente en tu dispositivo mediante el motor de voz del sistema operativo (Google Speech en Android). El audio no se envía a los servidores de TrueRules ni a ningún proveedor externo.</li>
       <li><strong>Datos de uso:</strong> contadores de créditos consumidos (páginas OCR y consultas de chat) necesarios para gestionar el modelo de acceso y prevenir el fraude en los periodos de prueba.</li>
       <li><strong>Datos de compras:</strong> las compras dentro de la aplicación son procesadas por Google Play y RevenueCat. TrueRules no accede ni almacena datos bancarios ni de tarjetas de crédito completos.</li>
@@ -79,7 +79,7 @@
     <ul>
       <li><strong>Supabase:</strong> autenticación y almacenamiento de datos de cuenta.</li>
       <li><strong>Google Gemini (Google LLC):</strong> motor de inteligencia artificial para OCR y consultas de reglas.</li>
-      <li><strong>Cloudflare Workers (Cloudflare, Inc.):</strong> infraestructura del servidor backend.</li>
+      <li><strong>Cloudflare:</strong> infraestructura cloud del servidor backend.</li>
       <li><strong>RevenueCat:</strong> gestión de compras dentro de la aplicación.</li>
       <li><strong>Google Play (Google LLC):</strong> distribución de la aplicación y procesamiento de pagos.</li>
     </ul>
@@ -113,7 +113,7 @@
     </div>
 
     <p>
-      Al tramitarse la baja (ya sea desde la app o por correo), los datos de perfil y correos electrónicos legibles en nuestros servidores serán eliminados o anonimizados de forma irreversible en un plazo máximo de 30 días. Conservaremos únicamente identificadores técnicos no legibles (hashes no reversibles) no utilizados para identificar personalmente al usuario para la gestión técnica de créditos de uso y prevención de fraude.
+      Al tramitarse la baja, los datos de perfil y correo electrónico en nuestros servidores serán eliminados o anonimizados de forma irreversible en un plazo máximo de 30 días.
     </p>
 
     <h2>9. Derechos del usuario</h2>
