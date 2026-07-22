@@ -565,7 +565,7 @@
       currentLang = lang;
       document.documentElement.lang = lang;
       document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = el.dataset.lang === lang ? '' : 'none';
+        const isBlock = ["DIV","P","H1","H2","H3","UL","OL"].includes(el.tagName); el.style.display = el.dataset.lang === lang ? (isBlock ? "block" : "") : "none";
       });
     }
 
