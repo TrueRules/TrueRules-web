@@ -3,152 +3,283 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Política de Privacidad · TrueRules</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Política de privacidad — TrueRules</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #f8f5f0; --text: #2d2a26; --muted: #9a9080;
-      --accent: #c4955a; --border: #ede8e0; --white: #ffffff;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      color: #1a1a1a;
+      line-height: 1.7;
+      font-size: 16px;
+      background: #fafafa;
     }
-    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; padding: 0 16px; }
-    .container { max-width: 680px; margin: 0 auto; padding: 60px 0 80px; }
-    .logo { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; margin-bottom: 48px; display: inline-block; }
-    .logo span:first-child { color: var(--text); }
-    .logo span:last-child { color: var(--accent); }
-    h1 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--text); line-height: 1.2; margin-bottom: 8px; }
-    .date { font-size: 13px; color: var(--muted); margin-bottom: 40px; }
-    .divider { height: 1px; background: var(--border); margin: 40px 0; }
-    h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 12px; margin-top: 40px; }
-    p { color: var(--text); margin-bottom: 14px; font-weight: 300; }
-    ul { padding-left: 20px; margin-bottom: 14px; }
-    li { margin-bottom: 6px; font-weight: 300; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .highlight { background: var(--white); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 24px 0; font-size: 14px; }
-    .delete-box { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
-    .delete-box p { margin-bottom: 12px; font-size: 14px; }
-    .delete-box a.delete-link { display: inline-block; background: var(--accent); color: var(--white); padding: 10px 20px; border-radius: 8px; font-weight: 500; font-size: 14px; margin-top: 4px; }
-    .delete-box a.delete-link:hover { opacity: 0.9; text-decoration: none; }
-    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+
+    .lang-bar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 32px;
+    }
+
+    .lang-btn {
+      background: #ffffff;
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #555;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .lang-btn:hover {
+      border-color: #888;
+      color: #1a1a1a;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #1a1a1a;
+    }
+
+    .date {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 36px;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: #333;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #888;
+    }
+
+    [data-lang] { display: none; }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <div class="logo"><span>True</span><span>Rules</span></div>
-
-    <h1>Política de Privacidad</h1>
-    <p class="date">Última actualización: 12 de julio de 2026</p>
-
-    <div class="highlight">
-      TrueRules es una aplicación para jugadores de mesa que permite digitalizar manuales de juego y consultar reglas mediante inteligencia artificial. Esta política explica qué datos recogemos, cómo los usamos, con quién los compartimos y cuáles son tus derechos.
-    </div>
-
-    <div class="divider"></div>
-
-    <h2>1. Responsable del tratamiento</h2>
-    <p>El responsable del tratamiento de tus datos personales es <strong>TrueRules</strong>, contactable en: <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
-
-    <h2>2. Base legal del tratamiento</h2>
-    <p>El tratamiento de tus datos se basa en las siguientes bases legales conforme al RGPD:</p>
-    <ul>
-      <li><strong>Ejecución del contrato:</strong> el tratamiento es necesario para prestarte el servicio que has solicitado al crear una cuenta y usar la aplicación.</li>
-      <li><strong>Consentimiento:</strong> para el tratamiento de imágenes y texto que tú mismo introduces en la aplicación.</li>
-      <li><strong>Interés legítimo:</strong> para garantizar la seguridad, estabilidad y mejora del servicio, y para prevenir el abuso del sistema de créditos de prueba.</li>
-    </ul>
-
-    <h2>3. Datos que recogemos</h2>
-    <p>TrueRules recoge únicamente los datos necesarios para el funcionamiento de la aplicación:</p>
-    <ul>
-      <li><strong>Cuenta de usuario:</strong> nombre y dirección de correo electrónico proporcionados al iniciar sesión con Google.</li>
-      <li><strong>Contenido del manual:</strong> imágenes y texto de las páginas que fotografías o subes para digitalizar tu manual. Estos datos se almacenan localmente en tu dispositivo. Para su procesamiento, se transmiten temporalmente a nuestros servidores y son eliminados tras su procesamiento.</li>
-      <li><strong>Consultas al asistente:</strong> las preguntas que realizas sobre reglas se transmiten a nuestro servidor para generar la respuesta mediante IA. Se procesan de forma temporal y no se utilizan para fines distintos a la prestación del servicio.</li>
-      <li><strong>Reconocimiento de voz:</strong> si utilizas el micrófono para dictar tus preguntas, el reconocimiento de voz se realiza íntegramente en tu dispositivo mediante el motor de voz del sistema operativo (Google Speech en Android). El audio no se envía a los servidores de TrueRules ni a ningún proveedor externo.</li>
-      <li><strong>Datos de uso:</strong> contadores de créditos consumidos (páginas OCR y consultas de chat) necesarios para gestionar el modelo de acceso y prevenir el fraude en los periodos de prueba.</li>
-      <li><strong>Datos de compras:</strong> las compras dentro de la aplicación son procesadas por Google Play y RevenueCat. TrueRules no accede ni almacena datos bancarios ni de tarjetas de crédito completos.</li>
-    </ul>
-
-    <h2>4. Datos almacenados localmente</h2>
-    <p>
-      El contenido que añades a tus juegos — imágenes de páginas, texto extraído, notas, historial de consultas e historial de partidas — se almacena localmente en el dispositivo del usuario. No se sube a ningún servidor externo salvo el texto o imágenes necesarios para procesar una consulta concreta, que se transmiten de forma temporal.
-    </p>
-
-    <h2>5. Proveedores de servicios</h2>
-    <p>TrueRules utiliza los siguientes servicios de terceros que actúan como encargados del tratamiento:</p>
-    <ul>
-      <li><strong>Supabase:</strong> autenticación y almacenamiento de datos de cuenta.</li>
-      <li><strong>Google Gemini (Google LLC):</strong> motor de inteligencia artificial para OCR y consultas de reglas.</li>
-      <li><strong>Cloudflare:</strong> infraestructura cloud del servidor backend.</li>
-      <li><strong>RevenueCat:</strong> gestión de compras dentro de la aplicación.</li>
-      <li><strong>Google Play (Google LLC):</strong> distribución de la aplicación y procesamiento de pagos.</li>
-    </ul>
-
-    <h2>6. Transferencias internacionales de datos</h2>
-    <p>
-      Algunos de los proveedores indicados en la sección anterior tienen su sede o procesan datos en los Estados Unidos. Estas transferencias se realizan con las garantías adecuadas conforme al RGPD, incluyendo el Marco de Privacidad de Datos UE-EE.UU. (Data Privacy Framework) y las Cláusulas Contractuales Tipo aprobadas por la Comisión Europea, según corresponda a cada proveedor.
-    </p>
-
-    <h2>7. Seguridad de los datos</h2>
-    <p>
-      Aplicamos medidas técnicas y organizativas razonables para proteger tu información frente a accesos no autorizados, pérdida, alteración o uso indebido. Todas las comunicaciones entre la aplicación y nuestros servidores se realizan mediante cifrado en tránsito (HTTPS/TLS). No obstante, ningún sistema de transmisión o almacenamiento de datos es completamente seguro, por lo que no podemos garantizar una seguridad absoluta.
-    </p>
-
-    <h2>8. Conservación y eliminación de datos</h2>
-    <p>
-      Los datos de tu cuenta se conservan mientras mantengas una cuenta activa en TrueRules.
-    </p>
-    <p>
-      Puedes eliminar tu cuenta en cualquier momento directamente desde la aplicación, en <strong>Ajustes → Preferencias → Eliminar cuenta y datos</strong>. Esta acción borrará inmediatamente todos los datos almacenados localmente en el dispositivo del usuario.
-    </p>
-    <p>
-      Si ya no tienes la aplicación instalada o prefieres hacerlo desde la web, puedes solicitar la eliminación de tu cuenta y tus datos aquí:
-    </p>
-
-    <div class="delete-box">
-      <p>Para solicitar la eliminación de tu cuenta y todos los datos asociados, escríbenos indicando el correo electrónico con el que te registraste. Procesaremos tu solicitud en un plazo máximo de 30 días.</p>
-      <a class="delete-link" href="mailto:truerulesgames@gmail.com?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20cuenta&body=Hola%2C%20quiero%20solicitar%20la%20eliminaci%C3%B3n%20de%20mi%20cuenta%20y%20todos%20mis%20datos%20de%20TrueRules.%0A%0ACorreo%20electr%C3%B3nico%20de%20la%20cuenta%3A%20">
-        Solicitar eliminación de cuenta →
-      </a>
-    </div>
-
-    <p>
-      Al tramitarse la baja, los datos de perfil serán eliminados de forma irreversible en un plazo máximo de 30 días. El correo electrónico se sustituye por una huella criptográfica (HMAC-SHA256) irreversible que no permite recuperar la dirección original; esta huella se conserva de forma indefinida con la única finalidad de evitar el abuso del sistema de créditos gratuitos mediante registros duplicados o reinstalaciones.
-    </p>
-
-    <h2>9. Derechos del usuario</h2>
-    <p>De acuerdo con el Reglamento General de Protección de Datos (RGPD), tienes derecho a:</p>
-    <ul>
-      <li>Acceder a tus datos personales.</li>
-      <li>Rectificar datos inexactos o incompletos.</li>
-      <li>Solicitar la supresión de tus datos ("derecho al olvido").</li>
-      <li>Oponerte al tratamiento o solicitar su limitación.</li>
-      <li>Solicitar la portabilidad de tus datos.</li>
-      <li>Presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) en <a href="https://www.aepd.es" target="_blank">www.aepd.es</a>.</li>
-    </ul>
-    <p>Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
-
-    <h2>10. Menores de edad</h2>
-    <p>
-      TrueRules no está dirigida a menores de 14 años. No recogemos conscientemente datos personales de menores. Si crees que un menor ha proporcionado sus datos sin el consentimiento de sus tutores, contáctanos para eliminarlos.
-    </p>
-
-    <h2>11. Cambios en esta política</h2>
-    <p>
-      Podemos actualizar esta política de privacidad ocasionalmente. Te notificaremos cualquier cambio relevante mediante la aplicación o por correo electrónico antes de que entre en vigor para que puedas revisar los nuevos términos.
-    </p>
-
-    <h2>12. Contacto</h2>
-    <p>
-      Si tienes cualquier pregunta sobre esta política de privacidad, puedes contactarnos en:<br />
-      <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>
-    </p>
-
-    <div class="footer">
-      <p>© 2026 TrueRules · <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
-    </div>
-
+  <div class="lang-bar">
+    <button class="lang-btn" onclick="toggleLang()">
+      <span data-lang="es">EN</span>
+      <span data-lang="en">ES</span>
+    </button>
   </div>
+
+  <h1 data-lang="es">Política de privacidad</h1>
+  <h1 data-lang="en">Privacy Policy</h1>
+  <p class="date" data-lang="es">Última actualización: 12 de julio de 2026</p>
+  <p class="date" data-lang="en">Last updated: 12 July 2026</p>
+
+  <!-- S1 -->
+  <h2 data-lang="es">1. Quién es el responsable</h2>
+  <h2 data-lang="en">1. Who is responsible</h2>
+  <p data-lang="es">El responsable del tratamiento de los datos es <strong>TrueRules</strong>, con domicilio en España. Puedes contactar con nosotros en <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
+  <p data-lang="en">The data controller is <strong>TrueRules</strong>, based in Spain. You can contact us at <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
+
+  <!-- S2 -->
+  <h2 data-lang="es">2. Qué datos recogemos</h2>
+  <h2 data-lang="en">2. What data we collect</h2>
+  <p data-lang="es">Recogemos únicamente los datos necesarios para prestarte el servicio:</p>
+  <p data-lang="en">We collect only the data necessary to provide the service:</p>
+  <ul data-lang="es">
+    <li><strong>Datos de cuenta:</strong> dirección de correo electrónico y nombre de usuario proporcionados al iniciar sesión con Google.</li>
+    <li><strong>Datos de uso:</strong> créditos disponibles, páginas de manuales digitalizadas, consultas realizadas, partidas registradas, estadísticas y notas.</li>
+    <li><strong>Contenido cargado:</strong> imágenes y texto extraído de los manuales que subes a la app.</li>
+    <li><strong>Datos técnicos:</strong> versión de la app, tipo de dispositivo e idioma del sistema, necesarios para el correcto funcionamiento del servicio.</li>
+    <li><strong>Reconocimiento de voz:</strong> si usas la función de micrófono, el audio se procesa localmente en tu dispositivo mediante la API nativa de Android. TrueRules no recibe ni almacena el audio en ningún servidor.</li>
+  </ul>
+  <ul data-lang="en">
+    <li><strong>Account data:</strong> email address and username provided when signing in with Google.</li>
+    <li><strong>Usage data:</strong> available credits, digitised manual pages, queries made, matches logged, stats and notes.</li>
+    <li><strong>Uploaded content:</strong> images and text extracted from the manuals you upload to the app.</li>
+    <li><strong>Technical data:</strong> app version, device type and system language, required for the correct operation of the service.</li>
+    <li><strong>Voice recognition:</strong> if you use the microphone feature, audio is processed locally on your device using Android's native API. TrueRules does not receive or store audio on any server.</li>
+  </ul>
+
+  <!-- S3 -->
+  <h2 data-lang="es">3. Para qué usamos tus datos</h2>
+  <h2 data-lang="en">3. How we use your data</h2>
+  <p data-lang="es">Usamos tus datos exclusivamente para:</p>
+  <p data-lang="en">We use your data exclusively to:</p>
+  <ul data-lang="es">
+    <li>Prestarte el servicio: digitalizar manuales, responder consultas de reglas, registrar partidas y estadísticas.</li>
+    <li>Gestionar tu cuenta y tus créditos de uso.</li>
+    <li>Enviarte comunicaciones relacionadas con el servicio (cambios en las condiciones, incidencias técnicas).</li>
+    <li>Mejorar el servicio mediante análisis agregados y anónimos del uso general de la app.</li>
+    <li>Prevenir el uso fraudulento o abusivo del sistema de créditos gratuitos.</li>
+  </ul>
+  <ul data-lang="en">
+    <li>Provide the service: digitise manuals, answer rules queries, log matches and stats.</li>
+    <li>Manage your account and usage credits.</li>
+    <li>Send you service-related communications (changes to terms, technical issues).</li>
+    <li>Improve the service through aggregated, anonymous analysis of general app usage.</li>
+    <li>Prevent fraudulent or abusive use of the free credit system.</li>
+  </ul>
+  <p data-lang="es">La base legal del tratamiento es la ejecución del contrato de servicio que aceptas al registrarte (art. 6.1.b RGPD) y, en el caso de prevención de fraude, el interés legítimo (art. 6.1.f RGPD).</p>
+  <p data-lang="en">The legal basis for processing is the performance of the service contract you accept upon registration (Art. 6.1.b GDPR) and, in the case of fraud prevention, legitimate interest (Art. 6.1.f GDPR).</p>
+
+  <!-- S4 -->
+  <h2 data-lang="es">4. Con quién compartimos tus datos</h2>
+  <h2 data-lang="en">4. Who we share your data with</h2>
+  <p data-lang="es">Compartimos datos únicamente con los proveedores tecnológicos necesarios para prestar el servicio:</p>
+  <p data-lang="en">We share data only with the technology providers necessary to deliver the service:</p>
+  <ul data-lang="es">
+    <li><strong>Supabase</strong> (base de datos y autenticación) — almacena tu cuenta y datos de uso.</li>
+    <li><strong>Google (Gemini API)</strong> — procesa el contenido de los manuales y las consultas de reglas para generar respuestas.</li>
+    <li><strong>Google (Firebase / Play Services)</strong> — gestiona la autenticación con Google y las compras en la app.</li>
+    <li><strong>RevenueCat</strong> — gestiona las suscripciones y los pagos realizados a través de Google Play.</li>
+    <li><strong>Cloudflare Workers</strong> — infraestructura del backend que procesa las peticiones entre la app y los servicios anteriores.</li>
+  </ul>
+  <ul data-lang="en">
+    <li><strong>Supabase</strong> (database and authentication) — stores your account and usage data.</li>
+    <li><strong>Google (Gemini API)</strong> — processes manual content and rules queries to generate responses.</li>
+    <li><strong>Google (Firebase / Play Services)</strong> — manages Google authentication and in-app purchases.</li>
+    <li><strong>RevenueCat</strong> — manages subscriptions and payments made through Google Play.</li>
+    <li><strong>Cloudflare Workers</strong> — backend infrastructure that processes requests between the app and the above services.</li>
+  </ul>
+  <p data-lang="es">No vendemos ni cedemos tus datos a terceros con fines comerciales o publicitarios.</p>
+  <p data-lang="en">We do not sell or transfer your data to third parties for commercial or advertising purposes.</p>
+
+  <!-- S5 -->
+  <h2 data-lang="es">5. Transferencias internacionales</h2>
+  <h2 data-lang="en">5. International transfers</h2>
+  <p data-lang="es">Algunos de nuestros proveedores (Supabase, Google, RevenueCat, Cloudflare) pueden almacenar o procesar datos fuera del Espacio Económico Europeo. Estas transferencias se realizan con las garantías adecuadas previstas en el RGPD, como cláusulas contractuales tipo o mecanismos de adecuación reconocidos por la Comisión Europea.</p>
+  <p data-lang="en">Some of our providers (Supabase, Google, RevenueCat, Cloudflare) may store or process data outside the European Economic Area. These transfers are carried out with the appropriate safeguards provided for in the GDPR, such as standard contractual clauses or adequacy mechanisms recognised by the European Commission.</p>
+
+  <!-- S6 -->
+  <h2 data-lang="es">6. Cuánto tiempo conservamos tus datos</h2>
+  <h2 data-lang="en">6. How long we keep your data</h2>
+  <p data-lang="es">Conservamos tus datos mientras tu cuenta esté activa. Si eliminas tu cuenta, tus datos de perfil, partidas, manuales y estadísticas se borran de forma irreversible en un plazo máximo de 30 días.</p>
+  <p data-lang="en">We keep your data for as long as your account is active. If you delete your account, your profile data, matches, manuals and stats are irreversibly deleted within a maximum of 30 days.</p>
+  <p data-lang="es">Al tramitarse la baja, el correo electrónico se sustituye por una huella criptográfica (HMAC-SHA256) irreversible que no permite recuperar la dirección original. Esta huella se conserva de forma indefinida con la única finalidad de evitar el abuso del sistema de créditos gratuitos mediante registros duplicados o reinstalaciones.</p>
+  <p data-lang="en">Upon account deletion, the email address is replaced by an irreversible cryptographic hash (HMAC-SHA256) that does not allow the original address to be recovered. This hash is retained indefinitely solely to prevent abuse of the free credit system through duplicate registrations or reinstallations.</p>
+
+  <!-- S7 -->
+  <h2 data-lang="es">7. Seguridad</h2>
+  <h2 data-lang="en">7. Security</h2>
+  <p data-lang="es">Aplicamos medidas técnicas y organizativas razonables para proteger tus datos frente a accesos no autorizados, pérdidas o modificaciones. Entre ellas: autenticación segura mediante Google OAuth, comunicaciones cifradas (HTTPS/TLS), control de acceso a la base de datos mediante Row Level Security (RLS) en Supabase, y verificación de identidad en cada petición al backend mediante JWT.</p>
+  <p data-lang="en">We apply reasonable technical and organisational measures to protect your data against unauthorised access, loss or modification. These include: secure authentication via Google OAuth, encrypted communications (HTTPS/TLS), database access control via Row Level Security (RLS) in Supabase, and identity verification on each backend request via JWT.</p>
+  <p data-lang="es">Ningún sistema es completamente seguro. Si detectas alguna vulnerabilidad, te agradecemos que nos lo comuniques en <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
+  <p data-lang="en">No system is completely secure. If you detect a vulnerability, we appreciate you reporting it to us at <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
+
+  <!-- S8 -->
+  <h2 data-lang="es">8. Eliminación de cuenta</h2>
+  <h2 data-lang="en">8. Account deletion</h2>
+  <p data-lang="es">Puedes eliminar tu cuenta en cualquier momento desde <strong>Ajustes → Cuenta → Eliminar cuenta y datos</strong> en la app. Esta acción es irreversible y elimina todos tus datos asociados en un plazo máximo de 30 días, con la excepción de la huella criptográfica descrita en la sección 6.</p>
+  <p data-lang="en">You can delete your account at any time from <strong>Settings → Account → Delete account and data</strong> in the app. This action is irreversible and deletes all your associated data within a maximum of 30 days, with the exception of the cryptographic hash described in section 6.</p>
+  <p data-lang="es">Si no puedes acceder a la app, puedes solicitar la eliminación de tu cuenta escribiendo a <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
+  <p data-lang="en">If you cannot access the app, you can request account deletion by writing to <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
+
+  <!-- S9 -->
+  <h2 data-lang="es">9. Tus derechos</h2>
+  <h2 data-lang="en">9. Your rights</h2>
+  <p data-lang="es">De acuerdo con el Reglamento General de Protección de Datos (RGPD), tienes derecho a:</p>
+  <p data-lang="en">Under the General Data Protection Regulation (GDPR), you have the right to:</p>
+  <ul data-lang="es">
+    <li>Acceder a tus datos personales.</li>
+    <li>Rectificar datos inexactos o incompletos.</li>
+    <li>Solicitar la supresión de tus datos ("derecho al olvido").</li>
+    <li>Oponerte al tratamiento o solicitar su limitación.</li>
+    <li>Solicitar la portabilidad de tus datos.</li>
+    <li>Presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) en <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</li>
+  </ul>
+  <ul data-lang="en">
+    <li>Access your personal data.</li>
+    <li>Rectify inaccurate or incomplete data.</li>
+    <li>Request erasure of your data ("right to be forgotten").</li>
+    <li>Object to processing or request its restriction.</li>
+    <li>Request portability of your data.</li>
+    <li>Lodge a complaint with the Spanish Data Protection Agency (AEPD) at <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>, or with the supervisory authority in your country of residence.</li>
+  </ul>
+  <p data-lang="es">Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
+  <p data-lang="en">To exercise any of these rights, write to us at <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
+
+  <!-- S10 -->
+  <h2 data-lang="es">10. Menores de edad</h2>
+  <h2 data-lang="en">10. Minors</h2>
+  <p data-lang="es">TrueRules no está dirigida a menores de 18 años. No recogemos conscientemente datos personales de menores. Si crees que un menor ha proporcionado sus datos sin el consentimiento de sus tutores, contáctanos para eliminarlos.</p>
+  <p data-lang="en">TrueRules is not intended for users under 18 years of age. We do not knowingly collect personal data from minors. If you believe a minor has provided their data without parental consent, please contact us to have it deleted.</p>
+
+  <!-- S11 -->
+  <h2 data-lang="es">11. Cambios en esta política</h2>
+  <h2 data-lang="en">11. Changes to this policy</h2>
+  <p data-lang="es">Podemos actualizar esta política de privacidad ocasionalmente. Te notificaremos cualquier cambio relevante mediante la aplicación o por correo electrónico antes de que entre en vigor para que puedas revisar los nuevos términos.</p>
+  <p data-lang="en">We may update this privacy policy from time to time. We will notify you of any significant changes via the app or by email before they take effect so you can review the new terms.</p>
+
+  <!-- S12 -->
+  <h2 data-lang="es">12. Contacto</h2>
+  <h2 data-lang="en">12. Contact</h2>
+  <p data-lang="es">Si tienes cualquier pregunta sobre esta política de privacidad, puedes contactarnos en:<br>
+  <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
+  <p data-lang="en">If you have any questions about this privacy policy, you can contact us at:<br>
+  <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
+
+  <div class="footer">
+    <p>© 2026 TrueRules · <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
+  </div>
+
+  <script>
+    let currentLang = 'es';
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.dataset.lang === lang ? '' : 'none';
+      });
+    }
+
+    function toggleLang() {
+      setLang(currentLang === 'es' ? 'en' : 'es');
+    }
+
+    const browserLang = navigator.language?.startsWith('es') ? 'es' : 'en';
+    setLang(browserLang);
+  </script>
+
 </body>
-</html>
 </html>
