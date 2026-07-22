@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos de uso — TrueRules</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f0e8;
+      --amber: #8b6914;
+      --amber-light: #c4955a;
+      --text: #2d2a26;
+      --text-muted: #7a7060;
+      --border: #e8ddd0;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span { color: var(--amber); }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    nav a {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover { color: var(--amber); }
+
+    .lang-btn {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.2s;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--amber-light);
+      color: var(--amber);
+    }
+
+    .hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 24px 40px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(32px, 5vw, 52px);
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero-meta { font-size: 14px; color: var(--text-muted); }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .toc {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+    }
+
+    .toc-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .toc ol {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .toc a {
+      font-size: 14px;
+      color: var(--amber);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .toc a:hover { text-decoration: underline; }
+
+    .section {
+      margin-bottom: 48px;
+      scroll-margin-top: 24px;
+    }
+
+    .section-number {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 8px;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .section p {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section ul, .section ol {
+      padding-left: 20px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .section li { font-size: 15px; color: var(--text); }
+
+    .highlight-card {
+      background: var(--white);
+      border: 1.5px solid var(--amber-light);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .highlight-card p { margin-bottom: 0; font-size: 15px; }
+    .highlight-card strong { color: var(--amber); }
+
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 48px;
+    }
+
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    footer p { font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+
+    footer a {
+      color: var(--amber);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    [data-lang] { display: none; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 20px 32px; }
+      .container { padding: 32px 20px 64px; }
+      header { padding: 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="/" class="logo">True<span>Rules</span></a>
+    <div class="header-right">
+      <nav>
+        <a href="/privacy-policy" data-lang="es">Privacidad</a>
+        <a href="/privacy-policy" data-lang="en">Privacy</a>
+      </nav>
+      <button class="lang-btn" onclick="toggleLang()">
+        <span data-lang="es">EN</span>
+        <span data-lang="en">ES</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <p class="hero-eyebrow" data-lang="es">Condiciones legales</p>
+    <p class="hero-eyebrow" data-lang="en">Legal</p>
+    <h1 data-lang="es">Términos de uso</h1>
+    <h1 data-lang="en">Terms of Service</h1>
+    <p class="hero-meta" data-lang="es">Última actualización: julio de 2026 · Vigentes desde: julio de 2026</p>
+    <p class="hero-meta" data-lang="en">Last updated: July 2026 · Effective from: July 2026</p>
+  </div>
+
+  <div class="container">
+
+    <!-- Índice ES -->
+    <div class="toc" data-lang="es">
+      <p class="toc-title">Contenido</p>
+      <ol>
+        <li><a href="#s1">Quién presta el servicio</a></li>
+        <li><a href="#s2">Qué es TrueRules</a></li>
+        <li><a href="#s3">Acceso y requisitos</a></li>
+        <li><a href="#s4">Planes y suscripciones</a></li>
+        <li><a href="#s5">Sistema de créditos</a></li>
+        <li><a href="#s6">Cambios y cancelaciones</a></li>
+        <li><a href="#s7">Derecho de desistimiento</a></li>
+        <li><a href="#s8">Uso aceptable</a></li>
+        <li><a href="#s9">Propiedad intelectual</a></li>
+        <li><a href="#s10">Limitación de responsabilidad</a></li>
+        <li><a href="#s11">Modificaciones</a></li>
+        <li><a href="#s12">Ley aplicable y jurisdicción</a></li>
+        <li><a href="#s13">Contacto</a></li>
+      </ol>
+    </div>
+
+    <!-- Índice EN -->
+    <div class="toc" data-lang="en">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#s1">Who provides the service</a></li>
+        <li><a href="#s2">What is TrueRules</a></li>
+        <li><a href="#s3">Access and requirements</a></li>
+        <li><a href="#s4">Plans and subscriptions</a></li>
+        <li><a href="#s5">Credit system</a></li>
+        <li><a href="#s6">Changes and cancellations</a></li>
+        <li><a href="#s7">Right of withdrawal</a></li>
+        <li><a href="#s8">Acceptable use</a></li>
+        <li><a href="#s9">Intellectual property</a></li>
+        <li><a href="#s10">Limitation of liability</a></li>
+        <li><a href="#s11">Modifications</a></li>
+        <li><a href="#s12">Governing law and jurisdiction</a></li>
+        <li><a href="#s13">Contact</a></li>
+      </ol>
+    </div>
+
+    <!-- S1 -->
+    <div class="section" id="s1">
+      <p class="section-number">01</p>
+      <h2 data-lang="es">Quién presta el servicio</h2>
+      <h2 data-lang="en">Who provides the service</h2>
+      <p data-lang="es">TrueRules es un servicio ofrecido bajo el nombre comercial <strong>TrueRules</strong>, con domicilio en España y dirección de contacto <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
+      <p data-lang="en">TrueRules is a service offered under the trade name <strong>TrueRules</strong>, based in Spain, contact address: <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
+      <p data-lang="es">Al usar TrueRules, aceptas estos Términos de uso en su totalidad. Si no los aceptas, no debes usar el servicio.</p>
+      <p data-lang="en">By using TrueRules, you agree to these Terms of Service in full. If you do not accept them, you must not use the service.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S2 -->
+    <div class="section" id="s2">
+      <p class="section-number">02</p>
+      <h2 data-lang="es">Qué es TrueRules</h2>
+      <h2 data-lang="en">What is TrueRules</h2>
+      <p data-lang="es">TrueRules es una aplicación móvil para Android que te permite:</p>
+      <p data-lang="en">TrueRules is an Android mobile app that allows you to:</p>
+      <ul data-lang="es">
+        <li>Digitalizar manuales de juegos de mesa mediante OCR e inteligencia artificial.</li>
+        <li>Consultar las reglas de un juego durante la partida mediante chat con IA.</li>
+        <li>Identificar iconos y componentes adjuntando fotografías (consultas visuales).</li>
+        <li>Registrar partidas, estadísticas y notas sobre tus juegos.</li>
+      </ul>
+      <ul data-lang="en">
+        <li>Digitise board game manuals using OCR and artificial intelligence.</li>
+        <li>Look up the rules of a game during play via an AI chat.</li>
+        <li>Identify icons and components by attaching photographs (visual queries).</li>
+        <li>Log matches, stats and notes about your games.</li>
+      </ul>
+      <p data-lang="es">El servicio utiliza modelos de inteligencia artificial de terceros para procesar los manuales y responder consultas. Las respuestas se basan en el contenido del manual cargado por el usuario y no sustituyen la lectura del reglamento oficial.</p>
+      <p data-lang="en">The service uses third-party AI models to process manuals and answer queries. Answers are based on the manual content uploaded by the user and do not replace reading the official rulebook.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S3 -->
+    <div class="section" id="s3">
+      <p class="section-number">03</p>
+      <h2 data-lang="es">Acceso y requisitos</h2>
+      <h2 data-lang="en">Access and requirements</h2>
+      <p data-lang="es">Para usar TrueRules necesitas:</p>
+      <p data-lang="en">To use TrueRules you need:</p>
+      <ul data-lang="es">
+        <li>Un dispositivo Android compatible con la versión mínima indicada en Google Play.</li>
+        <li>Una cuenta de Google para autenticarte en la app.</li>
+        <li>Conexión a internet para las funciones de IA (digitalización, chat y consultas visuales).</li>
+      </ul>
+      <ul data-lang="en">
+        <li>An Android device compatible with the minimum version stated on Google Play.</li>
+        <li>A Google account to sign in to the app.</li>
+        <li>An internet connection for AI features (digitisation, chat and visual queries).</li>
+      </ul>
+      <p data-lang="es">TrueRules está disponible únicamente en los países habilitados en Google Play. Nos reservamos el derecho de modificar la disponibilidad geográfica del servicio en cualquier momento.</p>
+      <p data-lang="en">TrueRules is available only in countries enabled on Google Play. We reserve the right to modify the geographic availability of the service at any time.</p>
+      <p data-lang="es">Al registrarte, debes tener al menos 18 años o la mayoría de edad legal en tu país de residencia.</p>
+      <p data-lang="en">When registering, you must be at least 18 years old or the legal age of majority in your country of residence.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S4 -->
+    <div class="section" id="s4">
+      <p class="section-number">04</p>
+      <h2 data-lang="es">Planes y suscripciones</h2>
+      <h2 data-lang="en">Plans and subscriptions</h2>
+      <p data-lang="es">TrueRules ofrece dos grupos de suscripción independientes y compatibles entre sí:</p>
+      <p data-lang="en">TrueRules offers two independent, mutually compatible subscription groups:</p>
+      <ul data-lang="es">
+        <li><strong>Chat y OCR:</strong> incluye créditos para digitalizar manuales (OCR) y realizar consultas de reglas por chat. Disponible en seis planes: Casual, Habitual, Entusiasta, Solo Chat S, Solo Chat M y Solo Chat L.</li>
+        <li><strong>Visual:</strong> incluye créditos para consultas visuales mediante fotografía. Disponible en dos planes: Visual Lite y Visual Pro.</li>
+      </ul>
+      <ul data-lang="en">
+        <li><strong>Chat & OCR:</strong> includes credits to digitise manuals (OCR) and ask rules questions via chat. Available in six plans: Casual, Regular, Enthusiast, Chat Only S, Chat Only M and Chat Only L.</li>
+        <li><strong>Visual:</strong> includes credits for visual queries using photos. Available in two plans: Visual Lite and Visual Pro.</li>
+      </ul>
+      <p data-lang="es">Cada suscripción tiene un periodo de facturación mensual con renovación automática. El cobro se realiza a través de Google Play en el momento de la compra y en cada renovación.</p>
+      <p data-lang="en">Each subscription has a monthly billing period with automatic renewal. Payment is processed through Google Play at the time of purchase and on each renewal.</p>
+      <p data-lang="es">Los precios incluyen el IVA o impuesto equivalente aplicable en tu país. El precio exacto puede variar ligeramente entre países de la zona euro por diferencias en los tipos impositivos locales.</p>
+      <p data-lang="en">Prices include VAT or equivalent tax applicable in your country. The exact price may vary slightly between eurozone countries due to differences in local tax rates.</p>
+      <div class="highlight-card" data-lang="es">
+        <p><strong>Créditos de prueba:</strong> los nuevos usuarios reciben un número limitado de créditos gratuitos al registrarse para que puedan probar el servicio antes de suscribirse.</p>
+      </div>
+      <div class="highlight-card" data-lang="en">
+        <p><strong>Trial credits:</strong> new users receive a limited number of free credits upon registration so they can try the service before subscribing.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S5 -->
+    <div class="section" id="s5">
+      <p class="section-number">05</p>
+      <h2 data-lang="es">Sistema de créditos</h2>
+      <h2 data-lang="en">Credit system</h2>
+      <p data-lang="es">Cada plan incluye un número de créditos por ciclo mensual:</p>
+      <p data-lang="en">Each plan includes a number of credits per monthly cycle:</p>
+      <ul data-lang="es">
+        <li><strong>Créditos OCR:</strong> se consumen al digitalizar páginas de manuales.</li>
+        <li><strong>Créditos de chat:</strong> se consumen al realizar consultas de reglas por escrito o por voz.</li>
+        <li><strong>Créditos visuales:</strong> se consumen al adjuntar fotografías en consultas.</li>
+      </ul>
+      <ul data-lang="en">
+        <li><strong>OCR credits:</strong> consumed when digitising manual pages.</li>
+        <li><strong>Chat credits:</strong> consumed when asking rules questions by text or voice.</li>
+        <li><strong>Visual credits:</strong> consumed when attaching photos to queries.</li>
+      </ul>
+      <div class="highlight-card" data-lang="es">
+        <p><strong>Política de uso o pérdida:</strong> los créditos no utilizados al final de cada ciclo mensual <strong>no se acumulan ni se transfieren</strong> al ciclo siguiente. Se reinician al valor del plan contratado en cada renovación o cambio de plan. Esta política aplica sin excepciones.</p>
+      </div>
+      <div class="highlight-card" data-lang="en">
+        <p><strong>Use-it-or-lose-it policy:</strong> unused credits at the end of each monthly cycle <strong>do not carry over or accumulate</strong> to the next cycle. They reset to the plan's full allowance on each renewal or plan change. This policy applies without exception.</p>
+      </div>
+      <p data-lang="es">Los planes de la línea "Solo Chat" únicamente incluyen créditos de chat y no permiten digitalizar manuales. Para digitalizar manuales es necesario contratar un plan de la línea Chat y OCR (Casual, Habitual o Entusiasta).</p>
+      <p data-lang="en">Chat Only plans include only chat credits and do not allow manual digitisation. To digitise manuals, a Chat & OCR plan (Casual, Regular or Enthusiast) is required.</p>
+      <p data-lang="es">Los planes Visual únicamente incluyen créditos para consultas visuales. Para usar consultas visuales con contexto del manual, es necesario tener manuales previamente digitalizados.</p>
+      <p data-lang="en">Visual plans include only visual query credits. To use visual queries with manual context, previously digitised manuals are required.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S6 -->
+    <div class="section" id="s6">
+      <p class="section-number">06</p>
+      <h2 data-lang="es">Cambios y cancelaciones</h2>
+      <h2 data-lang="en">Changes and cancellations</h2>
+      <p data-lang="es"><strong>Cambio de plan:</strong> puedes cambiar de plan en cualquier momento. El cambio tiene efecto inmediato y se cobra el precio completo del nuevo plan en ese momento. Los créditos restantes del plan anterior se pierden y se asignan los créditos del nuevo plan. Los días restantes del ciclo anterior se añaden al final del nuevo ciclo de facturación.</p>
+      <p data-lang="en"><strong>Plan change:</strong> you can change your plan at any time. The change takes effect immediately and the full price of the new plan is charged at that moment. Remaining credits from the previous plan are lost and the new plan's credits are assigned. Any remaining days from the previous billing cycle are added to the end of the new billing cycle.</p>
+      <p data-lang="es"><strong>Cancelación:</strong> puedes cancelar tu suscripción en cualquier momento desde el Centro de suscripciones de Google Play. La cancelación no es inmediata: el acceso continúa hasta el final del ciclo de facturación ya pagado, momento en el que la suscripción expira y los créditos restantes se pierden.</p>
+      <p data-lang="en"><strong>Cancellation:</strong> you can cancel your subscription at any time from the Google Play Subscription Centre. Cancellation is not immediate: access continues until the end of the already-paid billing cycle, at which point the subscription expires and remaining credits are lost.</p>
+      <p data-lang="es"><strong>Pausa:</strong> puedes pausar tu suscripción desde Google Play. La pausa se aplica al finalizar el ciclo en curso. Durante la pausa no tienes acceso al servicio y no se realizan cobros. Al reanudar, comienza un nuevo ciclo con el cupo completo del plan.</p>
+      <p data-lang="en"><strong>Pause:</strong> you can pause your subscription from Google Play. The pause takes effect at the end of the current cycle. During the pause you have no access to the service and no charges are made. On resumption, a new cycle begins with the plan's full allowance.</p>
+      <p data-lang="es"><strong>Renovación anticipada:</strong> si has agotado tus créditos antes de que finalice el ciclo, puedes contratar de nuevo el mismo plan para obtener un nuevo cupo de forma inmediata.</p>
+      <p data-lang="en"><strong>Early renewal:</strong> if you have used up your credits before the end of the cycle, you can subscribe to the same plan again to get a new allowance immediately.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S7 -->
+    <div class="section" id="s7">
+      <p class="section-number">07</p>
+      <h2 data-lang="es">Derecho de desistimiento</h2>
+      <h2 data-lang="en">Right of withdrawal</h2>
+      <div class="highlight-card" data-lang="es">
+        <p><strong>Nota provisional:</strong> las condiciones exactas de desistimiento están siendo revisadas por asesoría legal y podrán actualizarse. La versión definitiva se publicará antes del lanzamiento en producción.</p>
+      </div>
+      <div class="highlight-card" data-lang="en">
+        <p><strong>Provisional note:</strong> the exact withdrawal conditions are under legal review and may be updated. The final version will be published before the production launch.</p>
+      </div>
+      <p data-lang="es">De acuerdo con la Directiva 2011/83/UE sobre derechos de los consumidores, tienes derecho a desistir de una suscripción en un plazo de 14 días naturales desde la contratación, sin necesidad de justificación.</p>
+      <p data-lang="en">Under Directive 2011/83/EU on consumer rights, you have the right to withdraw from a subscription within 14 calendar days of purchase, without giving any reason.</p>
+      <p data-lang="es">Sin embargo, al confirmar la compra en la app, aceptas expresamente que el servicio comience a prestarse de forma inmediata. En consecuencia, <strong>si ya has utilizado créditos del plan contratado, pierdes el derecho de desistimiento</strong> respecto a los créditos ya consumidos, de acuerdo con el artículo 16(m) de la citada Directiva.</p>
+      <p data-lang="en">However, when confirming the purchase in the app, you expressly agree that the service begins immediately. As a result, <strong>if you have already used credits from the purchased plan, you lose the right of withdrawal</strong> in respect of the credits already consumed, in accordance with Article 16(m) of the aforementioned Directive.</p>
+      <p data-lang="es">Si deseas ejercer el derecho de desistimiento antes de haber consumido ningún crédito, puedes hacerlo contactando con nosotros en <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a> dentro del plazo de 14 días.</p>
+      <p data-lang="en">If you wish to exercise your right of withdrawal before consuming any credits, you may do so by contacting us at <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a> within the 14-day period.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S8 -->
+    <div class="section" id="s8">
+      <p class="section-number">08</p>
+      <h2 data-lang="es">Uso aceptable</h2>
+      <h2 data-lang="en">Acceptable use</h2>
+      <p data-lang="es">Al usar TrueRules te comprometes a:</p>
+      <p data-lang="en">By using TrueRules you agree to:</p>
+      <ul data-lang="es">
+        <li>No cargar contenido que infrinja derechos de propiedad intelectual de terceros sin contar con los permisos necesarios.</li>
+        <li>No usar el servicio para fines ilegales, fraudulentos o que perjudiquen a terceros.</li>
+        <li>No intentar eludir los sistemas de control de uso, autenticación o facturación.</li>
+        <li>No realizar ingeniería inversa, descompilar ni modificar la aplicación.</li>
+        <li>No usar el servicio de forma que genere una carga desproporcionada sobre la infraestructura técnica.</li>
+      </ul>
+      <ul data-lang="en">
+        <li>Not upload content that infringes third-party intellectual property rights without the necessary permissions.</li>
+        <li>Not use the service for illegal, fraudulent or harmful purposes.</li>
+        <li>Not attempt to circumvent usage control, authentication or billing systems.</li>
+        <li>Not reverse-engineer, decompile or modify the application.</li>
+        <li>Not use the service in a way that places a disproportionate load on the technical infrastructure.</li>
+      </ul>
+      <p data-lang="es">El incumplimiento de estas condiciones puede dar lugar a la suspensión o cancelación de tu cuenta.</p>
+      <p data-lang="en">Breach of these conditions may result in suspension or termination of your account.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S9 -->
+    <div class="section" id="s9">
+      <p class="section-number">09</p>
+      <h2 data-lang="es">Propiedad intelectual</h2>
+      <h2 data-lang="en">Intellectual property</h2>
+      <p data-lang="es">TrueRules y todos sus elementos — nombre, diseño, código, textos e interfaz — son propiedad del titular del servicio o de sus licenciantes y están protegidos por la legislación de propiedad intelectual.</p>
+      <p data-lang="en">TrueRules and all its elements — name, design, code, text and interface — are the property of the service provider or its licensors and are protected by intellectual property law.</p>
+      <p data-lang="es">Los manuales que cargas en la app son tu responsabilidad. Al cargarlos, declaras tener los derechos necesarios para procesarlos con el servicio o que su uso entra dentro del uso personal permitido por la legislación aplicable.</p>
+      <p data-lang="en">The manuals you upload to the app are your responsibility. By uploading them, you declare that you have the necessary rights to process them with the service or that their use falls within the personal use permitted by applicable law.</p>
+      <p data-lang="es">Los nombres de los juegos de mesa mencionados en la app son marcas de sus respectivos titulares. TrueRules no tiene afiliación ni patrocinio de ningún fabricante de juegos de mesa.</p>
+      <p data-lang="en">Board game names mentioned in the app are trademarks of their respective owners. TrueRules has no affiliation with or sponsorship from any board game publisher.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S10 -->
+    <div class="section" id="s10">
+      <p class="section-number">10</p>
+      <h2 data-lang="es">Limitación de responsabilidad</h2>
+      <h2 data-lang="en">Limitation of liability</h2>
+      <p data-lang="es">TrueRules se presta "tal como está". No garantizamos que el servicio sea ininterrumpido, libre de errores o que las respuestas de la IA sean exactas o completas.</p>
+      <p data-lang="en">TrueRules is provided "as is". We do not guarantee that the service will be uninterrupted, error-free, or that AI responses will be accurate or complete.</p>
+      <p data-lang="es">Las respuestas generadas por la IA se basan en el contenido del manual cargado por el usuario. TrueRules no se hace responsable de errores en las respuestas derivados de manuales incompletos, mal digitalizados o incorrectos.</p>
+      <p data-lang="en">AI-generated responses are based on the manual content uploaded by the user. TrueRules is not responsible for errors in responses arising from incomplete, poorly digitised or incorrect manuals.</p>
+      <p data-lang="es">En ningún caso la responsabilidad total del titular frente al usuario podrá superar el importe pagado por el usuario en los tres meses anteriores al evento que originó la reclamación.</p>
+      <p data-lang="en">In no event shall the total liability of the provider to the user exceed the amount paid by the user in the three months prior to the event giving rise to the claim.</p>
+      <p data-lang="es">Nada en estos términos limita los derechos que la legislación de consumo aplicable reconoce a los consumidores y que no pueden ser excluidos por contrato.</p>
+      <p data-lang="en">Nothing in these terms limits the rights that applicable consumer law grants to consumers and which cannot be excluded by contract.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S11 -->
+    <div class="section" id="s11">
+      <p class="section-number">11</p>
+      <h2 data-lang="es">Modificaciones</h2>
+      <h2 data-lang="en">Modifications</h2>
+      <p data-lang="es">Podemos modificar estos Términos de uso en cualquier momento. Cuando lo hagamos, actualizaremos la fecha de "Última actualización" en la parte superior de esta página y, si los cambios son relevantes, te lo comunicaremos mediante una notificación en la app o por correo electrónico.</p>
+      <p data-lang="en">We may modify these Terms of Service at any time. When we do, we will update the "Last updated" date at the top of this page and, if the changes are significant, notify you via an in-app notification or email.</p>
+      <p data-lang="es">El uso continuado del servicio tras la publicación de los nuevos términos implica su aceptación. Si no estás de acuerdo con los cambios, puedes cancelar tu suscripción antes de que entren en vigor.</p>
+      <p data-lang="en">Continued use of the service after the new terms are published implies acceptance. If you do not agree with the changes, you may cancel your subscription before they take effect.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S12 -->
+    <div class="section" id="s12">
+      <p class="section-number">12</p>
+      <h2 data-lang="es">Ley aplicable y jurisdicción</h2>
+      <h2 data-lang="en">Governing law and jurisdiction</h2>
+      <p data-lang="es">Estos Términos se rigen por la legislación española. Para cualquier controversia derivada del uso del servicio, las partes se someten a los juzgados y tribunales competentes conforme a la normativa de consumo aplicable.</p>
+      <p data-lang="en">These Terms are governed by Spanish law. For any dispute arising from the use of the service, the parties submit to the competent courts in accordance with applicable consumer regulations.</p>
+      <p data-lang="es">Si eres consumidor en la Unión Europea, también puedes acudir a la plataforma de resolución de litigios en línea de la Comisión Europea: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+      <p data-lang="en">If you are a consumer in the European Union, you may also use the European Commission's online dispute resolution platform: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- S13 -->
+    <div class="section" id="s13">
+      <p class="section-number">13</p>
+      <h2 data-lang="es">Contacto</h2>
+      <h2 data-lang="en">Contact</h2>
+      <p data-lang="es">Para cualquier consulta sobre estos Términos de uso, puedes contactar con nosotros en:</p>
+      <p data-lang="en">For any questions about these Terms of Service, you can contact us at:</p>
+      <div class="highlight-card">
+        <p><strong>TrueRules</strong><br>
+        <span data-lang="es">España</span><span data-lang="en">Spain</span><br>
+        <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 TrueRules · <span data-lang="es">España</span><span data-lang="en">Spain</span></p>
+    <p>
+      <a href="/privacy-policy" data-lang="es">Política de privacidad</a>
+      <a href="/privacy-policy" data-lang="en">Privacy policy</a>
+      &nbsp;·&nbsp;
+      <a href="/terms-of-service" data-lang="es">Términos de uso</a>
+      <a href="/terms-of-service" data-lang="en">Terms of service</a>
+    </p>
+  </footer>
+
+  <script>
+    let currentLang = 'es';
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.dataset.lang === lang ? '' : 'none';
+      });
+    }
+
+    function toggleLang() {
+      setLang(currentLang === 'es' ? 'en' : 'es');
+    }
+
+    const browserLang = navigator.language?.startsWith('es') ? 'es' : 'en';
+    setLang(browserLang);
+  </script>
+
+</body>
+</html>
