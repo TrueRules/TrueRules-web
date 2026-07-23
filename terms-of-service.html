@@ -239,10 +239,7 @@
         <a href="/privacy-policy" data-lang="es">Privacidad</a>
         <a href="/privacy-policy" data-lang="en">Privacy</a>
       </nav>
-      <button class="lang-btn" onclick="toggleLang()">
-        <span data-lang="es">EN</span>
-        <span data-lang="en">ES</span>
-      </button>
+      <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">EN</button>
     </div>
   </header>
 
@@ -565,8 +562,12 @@
       currentLang = lang;
       document.documentElement.lang = lang;
       document.querySelectorAll('[data-lang]').forEach(el => {
-        const isBlock = ["DIV","P","H1","H2","H3","UL","OL"].includes(el.tagName); el.style.display = el.dataset.lang === lang ? (isBlock ? "block" : "") : "none";
+        const show = el.dataset.lang === lang;
+        const tag = el.tagName;
+        const isInline = ['SPAN', 'A', 'STRONG', 'EM'].includes(tag);
+        el.style.display = show ? (isInline ? 'inline' : 'block') : 'none';
       });
+      document.getElementById('lang-toggle').textContent = lang === 'es' ? 'EN' : 'ES';
     }
 
     function toggleLang() {
@@ -574,7 +575,7 @@
     }
 
     const browserLang = navigator.language?.startsWith('es') ? 'es' : 'en';
-    setLang(browserLang);
+    if (browserLang !== 'es') setLang('en');
   </script>
 
 </body>
