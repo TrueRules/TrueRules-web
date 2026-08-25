@@ -34,8 +34,40 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <!--
+    NOTAS DE LA REVISIÓN (agosto 2026):
 
+    1) Sección 1 — identificación del responsable, decisión consciente.
+       Se mantiene la identificación mínima original ("TrueRules, con
+       domicilio en España"), sin nombre completo, NIF ni domicilio postal
+       detallado. Esto NO cumple estrictamente el art. 10 LSSI, que exige
+       nombre/razón social, NIF y domicilio postal completo, accesibles de
+       forma pública, permanente y gratuita — la FAQ oficial de la LSSI lo
+       confirma expresamente. Se deja así de forma deliberada: la
+       exposición del nombre y domicilio particulares ya existe igualmente
+       en el perfil de desarrollador de Google Play (cuenta individual con
+       compras dentro de la app), así que no añadir esos datos aquí no
+       reduce esa exposición ya existente — pero el NIF si se incluyera
+       sería una exposición nueva, no duplicada en ningún otro sitio
+       público, y es la pieza que se ha decidido no publicar. Riesgo
+       asumido: incumplimiento parcial del art. 10 LSSI, con probabilidad
+       baja pero no nula de sanción (rango entre infracción leve y grave
+       según las fuentes consultadas, hasta 30.000€-150.000€) si llegara a
+       tramitarse una reclamación. Revisar esta decisión si TrueRules gana
+       tracción real o si se constituye una sociedad más adelante (en ese
+       caso el NIF público pasaría a ser el de la empresa, no el personal).
+
+    2) Sección 6 y 8 — distinguen entre datos de servidor (cuenta,
+       créditos, suscripción — sí se borran del backend en 30 días) y
+       contenido local del dispositivo (manuales, partidas, jugadores,
+       notas, estadísticas — viven solo en AsyncStorage y NO se borran al
+       eliminar la cuenta, según la arquitectura real de la app). La
+       versión original prometía un borrado que el backend no ejecuta.
+
+    Sin tocar: retención indefinida del hash HMAC-SHA256 (sección 6) y el
+    texto de la sección 7 de seguridad — quedan como en el original.
+  -->
+  <div class="container">
     <div class="header">
       <div class="logo"><span>True</span><span>Rules</span></div>
       <button class="lang-btn" onclick="toggleLang()">
@@ -43,28 +75,22 @@
         <span data-lang="en">ES</span>
       </button>
     </div>
-
     <h1 data-lang="es">Política de privacidad</h1>
     <h1 data-lang="en">Privacy Policy</h1>
-    <p class="date" data-lang="es">Última actualización: 12 de julio de 2026</p>
-    <p class="date" data-lang="en">Last updated: 12 July 2026</p>
-
+    <p class="date" data-lang="es">Última actualización: 25 de agosto de 2026</p>
+    <p class="date" data-lang="en">Last updated: 25 August 2026</p>
     <div class="highlight" data-lang="es">
       TrueRules es una aplicación para jugadores de mesa que permite digitalizar manuales de juego y consultar reglas mediante inteligencia artificial.
     </div>
     <div class="highlight" data-lang="en">
       TrueRules is an app for board game players that allows you to digitise game manuals and look up rules using artificial intelligence.
     </div>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">1. Quién es el responsable</h2>
     <h2 data-lang="en">1. Who is responsible</h2>
     <p data-lang="es">El responsable del tratamiento es <strong>TrueRules</strong>, con domicilio en España. Contacto: <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
     <p data-lang="en">The data controller is <strong>TrueRules</strong>, based in Spain. Contact: <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">2. Qué datos recogemos</h2>
     <h2 data-lang="en">2. What data we collect</h2>
     <p data-lang="es">Recogemos únicamente los datos necesarios para prestarte el servicio:</p>
@@ -83,9 +109,7 @@
       <li><strong>Technical data:</strong> app version, device type and system language.</li>
       <li><strong>Voice:</strong> microphone audio is processed locally on your device using Android's native API. TrueRules does not receive or store audio.</li>
     </ul>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">3. Para qué usamos tus datos</h2>
     <h2 data-lang="en">3. How we use your data</h2>
     <ul data-lang="es">
@@ -104,9 +128,7 @@
     </ul>
     <p data-lang="es">Base legal: ejecución del contrato (art. 6.1.b RGPD) e interés legítimo para prevención de fraude (art. 6.1.f RGPD).</p>
     <p data-lang="en">Legal basis: performance of the service contract (Art. 6.1.b GDPR) and legitimate interest for fraud prevention (Art. 6.1.f GDPR).</p>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">4. Con quién compartimos tus datos</h2>
     <h2 data-lang="en">4. Who we share your data with</h2>
     <p data-lang="es">Solo con los proveedores tecnológicos necesarios para prestar el servicio:</p>
@@ -125,86 +147,70 @@
       <li><strong>RevenueCat</strong> — subscription and payment management.</li>
       <li><strong>Cloudflare Workers</strong> — backend infrastructure.</li>
     </ul>
+    <p data-lang="es">Usamos la Gemini API en su modalidad de pago (no la capa gratuita), por lo que Google no utiliza el contenido de tus manuales ni tus consultas para entrenar o mejorar sus modelos.</p>
+    <p data-lang="en">We use the Gemini API under its paid tier (not the free tier), so Google does not use the content of your manuals or your queries to train or improve its models.</p>
     <p data-lang="es">No vendemos ni cedemos tus datos a terceros con fines comerciales o publicitarios.</p>
     <p data-lang="en">We do not sell or transfer your data to third parties for commercial or advertising purposes.</p>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">5. Transferencias internacionales</h2>
     <h2 data-lang="en">5. International transfers</h2>
     <p data-lang="es">Algunos proveedores (Supabase, Google, RevenueCat, Cloudflare) pueden procesar datos fuera del Espacio Económico Europeo. Estas transferencias se realizan con las garantías previstas en el RGPD: cláusulas contractuales tipo o mecanismos de adecuación reconocidos por la Comisión Europea (como el Data Privacy Framework UE-EE.UU.).</p>
     <p data-lang="en">Some providers (Supabase, Google, RevenueCat, Cloudflare) may process data outside the European Economic Area. These transfers are carried out with the safeguards provided for in the GDPR: standard contractual clauses or adequacy mechanisms recognised by the European Commission (such as the EU-US Data Privacy Framework).</p>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">6. Cuánto tiempo conservamos tus datos</h2>
     <h2 data-lang="en">6. How long we keep your data</h2>
-    <p data-lang="es">Conservamos tus datos mientras tu cuenta esté activa. Si eliminas tu cuenta, tus datos de perfil, partidas, manuales y estadísticas se borran de forma irreversible en un plazo máximo de 30 días.</p>
-    <p data-lang="en">We keep your data for as long as your account is active. If you delete your account, your profile data, matches, manuals and stats are irreversibly deleted within a maximum of 30 days.</p>
+    <p data-lang="es">Conservamos en nuestros servidores los datos de tu cuenta (correo electrónico, créditos, historial de suscripción) mientras esta esté activa. Si eliminas tu cuenta, estos datos se borran de forma irreversible de nuestros servidores en un plazo máximo de 30 días.</p>
+    <p data-lang="en">We keep your account data (email address, credits, subscription history) on our servers for as long as your account is active. If you delete your account, this data is irreversibly deleted from our servers within a maximum of 30 days.</p>
+    <p data-lang="es">Los manuales digitalizados, partidas, jugadores, notas y estadísticas se almacenan únicamente en tu propio dispositivo, no en nuestros servidores. Eliminar tu cuenta no borra este contenido: permanece en tu dispositivo hasta que lo elimines manualmente desde la app o desinstales TrueRules.</p>
+    <p data-lang="en">Digitised manuals, matches, players, notes and stats are stored only on your own device, not on our servers. Deleting your account does not erase this content: it remains on your device until you delete it manually from the app or uninstall TrueRules.</p>
     <div class="highlight" data-lang="es">
-      Al tramitarse la baja, el correo electrónico se sustituye por una huella criptográfica (HMAC-SHA256) irreversible. Esta huella se conserva indefinidamente con la única finalidad de evitar el abuso del sistema de créditos gratuitos mediante registros duplicados o reinstalaciones.
+      Al tramitarse la baja, el correo electrónico se sustituye por una huella criptográfica (HMAC-SHA256) irreversible. Esta huella se conserva indefinidamente con la única finalidad de evitar el abuso del sistema de créditos gratuitos mediante registros duplicados o reinstalaciones, en base al interés legítimo del art. 6.1.f RGPD. Esta huella sigue siendo un dato personal seudonimizado, no anónimo, y por tanto sujeto al RGPD.
     </div>
     <div class="highlight" data-lang="en">
-      Upon account deletion, the email address is replaced by an irreversible cryptographic hash (HMAC-SHA256). This hash is retained indefinitely solely to prevent abuse of the free credit system through duplicate registrations or reinstallations.
+      Upon account deletion, the email address is replaced by an irreversible cryptographic hash (HMAC-SHA256). This hash is retained indefinitely solely to prevent abuse of the free credit system through duplicate registrations or reinstallations, based on the legitimate interest under Art. 6.1.f GDPR. This hash remains pseudonymised personal data, not anonymous data, and therefore remains subject to the GDPR.
     </div>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">7. Seguridad</h2>
     <h2 data-lang="en">7. Security</h2>
     <p data-lang="es">Aplicamos medidas técnicas y organizativas razonables: autenticación segura mediante Google OAuth, comunicaciones cifradas (HTTPS/TLS), control de acceso a la base de datos mediante Row Level Security (RLS) en Supabase, y verificación de identidad en cada petición al backend mediante JWT.</p>
     <p data-lang="en">We apply reasonable technical and organisational measures: secure authentication via Google OAuth, encrypted communications (HTTPS/TLS), database access control via Row Level Security (RLS) in Supabase, and identity verification on each backend request via JWT.</p>
     <p data-lang="es">Si detectas alguna vulnerabilidad, comunícanos en <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
     <p data-lang="en">If you detect a vulnerability, please report it to <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">8. Eliminación de cuenta</h2>
     <h2 data-lang="en">8. Account deletion</h2>
-    <p data-lang="es">Puedes eliminar tu cuenta en cualquier momento desde <strong>Ajustes → Cuenta → Eliminar cuenta y datos</strong> en la app. Esta acción es irreversible y elimina todos tus datos en un plazo máximo de 30 días, con la excepción de la huella criptográfica descrita en la sección 6.</p>
-    <p data-lang="en">You can delete your account at any time from <strong>Settings → Account → Delete account and data</strong> in the app. This action is irreversible and deletes all your data within a maximum of 30 days, with the exception of the cryptographic hash described in section 6.</p>
+    <p data-lang="es">Puedes eliminar tu cuenta en cualquier momento desde <strong>Ajustes → Cuenta → Eliminar cuenta y datos</strong> en la app. Esta acción es irreversible y elimina tus datos de servidor en un plazo máximo de 30 días, con la excepción de la huella criptográfica descrita en la sección 6. El contenido almacenado localmente en tu dispositivo (manuales, partidas, estadísticas) no se ve afectado por esta acción — consulta la sección 6.</p>
+    <p data-lang="en">You can delete your account at any time from <strong>Settings → Account → Delete account and data</strong> in the app. This action is irreversible and deletes your server-side data within a maximum of 30 days, with the exception of the cryptographic hash described in section 6. Content stored locally on your device (manuals, matches, stats) is not affected by this action — see section 6.</p>
     <p data-lang="es">Si no puedes acceder a la app, escríbenos a <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
     <p data-lang="en">If you cannot access the app, write to us at <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">9. Tus derechos</h2>
     <h2 data-lang="en">9. Your rights</h2>
     <p data-lang="es">De acuerdo con el RGPD, tienes derecho a acceder, rectificar, suprimir, oponerte, limitar y portar tus datos. También puedes presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener">AEPD</a> o ante la autoridad supervisora de tu país de residencia.</p>
     <p data-lang="en">Under the GDPR, you have the right to access, rectify, erase, object to, restrict and port your data. You may also lodge a complaint with the <a href="https://www.aepd.es" target="_blank" rel="noopener">AEPD</a> or with the supervisory authority in your country of residence.</p>
     <p data-lang="es">Para ejercer cualquiera de estos derechos: <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
     <p data-lang="en">To exercise any of these rights: <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">10. Menores de edad</h2>
     <h2 data-lang="en">10. Minors</h2>
     <p data-lang="es">TrueRules no está dirigida a menores de 18 años. Si crees que un menor ha proporcionado sus datos sin consentimiento de sus tutores, contáctanos para eliminarlos.</p>
     <p data-lang="en">TrueRules is not intended for users under 18. If you believe a minor has provided their data without parental consent, contact us to have it deleted.</p>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">11. Cambios en esta política</h2>
     <h2 data-lang="en">11. Changes to this policy</h2>
     <p data-lang="es">Podemos actualizar esta política ocasionalmente. Te notificaremos cualquier cambio relevante mediante la app o por correo electrónico antes de que entre en vigor.</p>
     <p data-lang="en">We may update this policy from time to time. We will notify you of any significant changes via the app or by email before they take effect.</p>
-
     <div class="divider"></div>
-
     <h2 data-lang="es">12. Contacto</h2>
     <h2 data-lang="en">12. Contact</h2>
     <p data-lang="es"><a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
     <p data-lang="en"><a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
-
     <div class="footer">
       <p>© 2026 TrueRules · <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
     </div>
-
   </div>
-
   <script>
     let currentLang = 'es';
-
     function setLang(lang) {
       currentLang = lang;
       document.documentElement.lang = lang;
@@ -215,17 +221,11 @@
         el.style.display = show ? (isInline ? 'inline' : 'block') : 'none';
       });
     }
-
     function toggleLang() {
       setLang(currentLang === 'es' ? 'en' : 'es');
     }
-
     const browserLang = navigator.language?.startsWith('es') ? 'es' : 'en';
     if (browserLang !== 'es') setLang('en');
   </script>
-
-</body>
-</html>
-
 </body>
 </html>
