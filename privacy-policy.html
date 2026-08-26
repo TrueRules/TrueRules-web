@@ -57,12 +57,67 @@
        tracción real o si se constituye una sociedad más adelante (en ese
        caso el NIF público pasaría a ser el de la empresa, no el personal).
 
-    2) Sección 6 y 8 — distinguen entre datos de servidor (cuenta,
-       créditos, suscripción — sí se borran del backend en 30 días) y
-       contenido local del dispositivo (manuales, partidas, jugadores,
-       notas, estadísticas — viven solo en AsyncStorage y NO se borran al
-       eliminar la cuenta, según la arquitectura real de la app). La
-       versión original prometía un borrado que el backend no ejecuta.
+    2) Sección 6 y 8 — verificadas contra el código real de
+       /api/delete-account (agosto 2026). Tres correcciones:
+       (a) el contenido local del dispositivo (manuales, partidas,
+       jugadores, notas, estadísticas — AsyncStorage) NO se borra al
+       eliminar la cuenta, solo el credencial de acceso del servidor;
+       (b) los registros de créditos, uso y suscripciones NO se eliminan
+       al borrar la cuenta — se conservan indefinidamente, desvinculados
+       de la identidad (user_id a NULL + email sustituido por hash
+       HMAC-SHA256), no solo el correo como decía la versión anterior;
+       (c) el borrado de cuenta está BLOQUEADO server-side si hay una
+       suscripción activa o pausada (error 409 'active_subscription') —
+       la versión anterior decía "en cualquier momento", lo cual era
+       falso. Las tres correcciones están verificadas directamente contra
+       el código del endpoint, no son una suposición.
+
+    3) Sección 2 y 6 — ampliadas tras revisar storage.ts (código cliente,
+       React Native/Expo, agosto 2026). El texto original de "Contenido
+       cargado" solo mencionaba imágenes y texto de manuales. El código
+       confirma que la app almacena localmente (AsyncStorage +
+       FileSystem, nunca en el backend salvo cuando se usan en una
+       consulta) varias categorías más de imágenes que no estaban
+       reflejadas: fotografías adjuntadas en consultas visuales sobre
+       componentes del juego (guardadas de forma permanente en el
+       historial, función saveHistoryImage), fotografías que el usuario
+       adjunta a una partida registrada (campo photoUris de Match),
+       la imagen de portada elegida para cada juego, y las viñetas de
+       cómic generadas por la IA a partir del manual. Se ha ampliado la
+       Sección 2 para reflejar estas categorías y la Sección 6 para que
+       la mención al contenido "solo en tu dispositivo" no se limite a
+       "manuales, partidas, jugadores, notas y estadísticas" sino que
+       cubra explícitamente estas imágenes también. No implica ningún
+       nuevo destinatario: las fotos de consultas visuales ya viajaban a
+       la Gemini API como parte de esas consultas (cubierto por la
+       Sección 4 desde el principio), esto es una corrección de
+       exhaustividad descriptiva, no un cambio de tratamiento.
+
+    4) Sección 2 — reordenada para destacar primero lo que sí es efímero.
+       El contenido (manuales, fotos, partidas, notas) se guarda solo en
+       el dispositivo y, cuando se envía a la IA, es una transmisión
+       puntual que no se conserva en el servidor una vez procesada. Esto
+       ya era así en el tratamiento real (confirmado por storage.ts y los
+       handlers de backend), pero antes estaba mezclado con los datos que
+       sí son persistentes en el servidor (cuenta, créditos, suscripción),
+       dando la impresión de un solo bloque homogéneo. Se ha separado en
+       dos grupos claros: contenido (efímero en servidor, permanente solo
+       en el dispositivo) y cuenta/uso/suscripción (persistente en el
+       servidor mientras la cuenta está activa). De paso se ha corregido
+       una imprecisión: "partidas, estadísticas y notas" estaba antes
+       listado dentro de "datos de uso" como si fuera algo que vive en el
+       servidor -- no es así, esos tres nunca salen del dispositivo, y
+       ahora están en el grupo correcto junto con jugadores, fotos de
+       partida y portada del juego.
+
+       Importante: esto es una reorganización y clarificación del texto,
+       no un cambio de qué se trata. Los créditos, el estado de
+       suscripción y los datos de cuenta se siguen guardando en el
+       servidor exactamente igual que antes -- no sería correcto (ni
+       compatible con el principio de transparencia del art. 5.1.a RGPD)
+       simplificar la política a "solo tratamos tu correo", porque el
+       código sigue guardando esos contadores y ese estado de suscripción
+       independientemente de lo que diga el texto.
 
     Sin tocar: retención indefinida del hash HMAC-SHA256 (sección 6) y el
     texto de la sección 7 de seguridad — quedan como en el original.
@@ -93,19 +148,21 @@
     <div class="divider"></div>
     <h2 data-lang="es">2. Qué datos recogemos</h2>
     <h2 data-lang="en">2. What data we collect</h2>
-    <p data-lang="es">Recogemos únicamente los datos necesarios para prestarte el servicio:</p>
-    <p data-lang="en">We collect only the data necessary to provide the service:</p>
+    <p data-lang="es">Recogemos distintos tipos de datos, con tratamientos muy diferentes entre sí. Lo más importante primero: <strong>el contenido de tus manuales, tus fotos, tus partidas y tus notas se almacena únicamente en tu dispositivo</strong>, no en nuestros servidores. Cuando ese contenido se envía a la IA para procesarlo — por ejemplo, para digitalizar una página o responder una consulta — la transmisión es puntual: se usa para esa operación y no se conserva en nuestros servidores una vez completada.</p>
+    <p data-lang="en">We collect different kinds of data, and they are treated very differently. The most important point first: <strong>the content of your manuals, photos, matches and notes is stored only on your device</strong>, not on our servers. When that content is sent to the AI for processing — for example, to digitise a page or answer a query — the transmission is one-off: it is used for that single operation and is not retained on our servers afterwards.</p>
     <ul data-lang="es">
-      <li><strong>Datos de cuenta:</strong> correo electrónico y nombre de usuario al iniciar sesión con Google.</li>
-      <li><strong>Datos de uso:</strong> créditos disponibles, páginas digitalizadas, consultas realizadas, partidas, estadísticas y notas.</li>
-      <li><strong>Contenido cargado:</strong> imágenes y texto extraído de los manuales que subes.</li>
+      <li><strong>Contenido de manuales y consultas (solo en tu dispositivo; se envía puntualmente a la IA para procesarlo):</strong> imágenes y texto extraído de los manuales que subes; fotografías que adjuntas al hacer una consulta visual sobre un componente del juego; y las viñetas de cómic que la IA genera a partir del manual.</li>
+      <li><strong>Partidas y notas (solo en tu dispositivo, nunca se envían a nuestros servidores):</strong> jugadores, partidas registradas y las fotografías que les adjuntas, notas, estadísticas, y la imagen de portada que eliges para cada juego.</li>
+      <li><strong>Datos de cuenta (en nuestros servidores, mientras tu cuenta está activa):</strong> correo electrónico y nombre de usuario al iniciar sesión con Google.</li>
+      <li><strong>Datos de uso y suscripción (en nuestros servidores, mientras tu cuenta está activa):</strong> créditos disponibles, número de páginas digitalizadas y de consultas realizadas, y estado de tu suscripción — como contadores y estados, no como el contenido de tus manuales o consultas.</li>
       <li><strong>Datos técnicos:</strong> versión de la app, tipo de dispositivo e idioma del sistema.</li>
       <li><strong>Voz:</strong> el audio del micrófono se procesa localmente en tu dispositivo con la API nativa de Android. TrueRules no recibe ni almacena el audio.</li>
     </ul>
     <ul data-lang="en">
-      <li><strong>Account data:</strong> email address and username when signing in with Google.</li>
-      <li><strong>Usage data:</strong> available credits, digitised pages, queries made, matches, stats and notes.</li>
-      <li><strong>Uploaded content:</strong> images and text extracted from the manuals you upload.</li>
+      <li><strong>Manual and query content (only on your device; sent one-off to the AI for processing):</strong> images and text extracted from the manuals you upload; photos you attach when making a visual query about a game component; and the comic-strip panels the AI generates from the manual.</li>
+      <li><strong>Matches and notes (only on your device, never sent to our servers):</strong> players, logged matches and the photos you attach to them, notes, stats, and the cover image you choose for each game.</li>
+      <li><strong>Account data (on our servers, while your account is active):</strong> email address and username when signing in with Google.</li>
+      <li><strong>Usage and subscription data (on our servers, while your account is active):</strong> available credits, the number of digitised pages and queries made, and your subscription status — as counters and states, not as the content of your manuals or queries.</li>
       <li><strong>Technical data:</strong> app version, device type and system language.</li>
       <li><strong>Voice:</strong> microphone audio is processed locally on your device using Android's native API. TrueRules does not receive or store audio.</li>
     </ul>
@@ -135,14 +192,14 @@
     <p data-lang="en">Only with the technology providers necessary to deliver the service:</p>
     <ul data-lang="es">
       <li><strong>Supabase</strong> — base de datos y autenticación.</li>
-      <li><strong>Google (Gemini API)</strong> — procesamiento de manuales y consultas de reglas.</li>
+      <li><strong>Google (Gemini API)</strong> — procesamiento de manuales, consultas de reglas y consultas visuales (fotografías de componentes del juego).</li>
       <li><strong>Google (Firebase / Play Services)</strong> — autenticación y compras.</li>
       <li><strong>RevenueCat</strong> — gestión de suscripciones y pagos.</li>
       <li><strong>Cloudflare Workers</strong> — infraestructura del backend.</li>
     </ul>
     <ul data-lang="en">
       <li><strong>Supabase</strong> — database and authentication.</li>
-      <li><strong>Google (Gemini API)</strong> — manual processing and rules queries.</li>
+      <li><strong>Google (Gemini API)</strong> — manual processing, rules queries and visual queries (photos of game components).</li>
       <li><strong>Google (Firebase / Play Services)</strong> — authentication and purchases.</li>
       <li><strong>RevenueCat</strong> — subscription and payment management.</li>
       <li><strong>Cloudflare Workers</strong> — backend infrastructure.</li>
@@ -159,16 +216,12 @@
     <div class="divider"></div>
     <h2 data-lang="es">6. Cuánto tiempo conservamos tus datos</h2>
     <h2 data-lang="en">6. How long we keep your data</h2>
-    <p data-lang="es">Conservamos en nuestros servidores los datos de tu cuenta (correo electrónico, créditos, historial de suscripción) mientras esta esté activa. Si eliminas tu cuenta, estos datos se borran de forma irreversible de nuestros servidores en un plazo máximo de 30 días.</p>
-    <p data-lang="en">We keep your account data (email address, credits, subscription history) on our servers for as long as your account is active. If you delete your account, this data is irreversibly deleted from our servers within a maximum of 30 days.</p>
-    <p data-lang="es">Los manuales digitalizados, partidas, jugadores, notas y estadísticas se almacenan únicamente en tu propio dispositivo, no en nuestros servidores. Eliminar tu cuenta no borra este contenido: permanece en tu dispositivo hasta que lo elimines manualmente desde la app o desinstales TrueRules.</p>
-    <p data-lang="en">Digitised manuals, matches, players, notes and stats are stored only on your own device, not on our servers. Deleting your account does not erase this content: it remains on your device until you delete it manually from the app or uninstall TrueRules.</p>
-    <div class="highlight" data-lang="es">
-      Al tramitarse la baja, el correo electrónico se sustituye por una huella criptográfica (HMAC-SHA256) irreversible. Esta huella se conserva indefinidamente con la única finalidad de evitar el abuso del sistema de créditos gratuitos mediante registros duplicados o reinstalaciones, en base al interés legítimo del art. 6.1.f RGPD. Esta huella sigue siendo un dato personal seudonimizado, no anónimo, y por tanto sujeto al RGPD.
-    </div>
-    <div class="highlight" data-lang="en">
-      Upon account deletion, the email address is replaced by an irreversible cryptographic hash (HMAC-SHA256). This hash is retained indefinitely solely to prevent abuse of the free credit system through duplicate registrations or reinstallations, based on the legitimate interest under Art. 6.1.f GDPR. This hash remains pseudonymised personal data, not anonymous data, and therefore remains subject to the GDPR.
-    </div>
+    <p data-lang="es">Mientras tu cuenta esté activa, conservamos en nuestros servidores tus datos de cuenta (correo electrónico, credenciales de autenticación), tus créditos y tu historial de uso y de suscripciones.</p>
+    <p data-lang="en">While your account is active, we keep your account data (email address, authentication credentials), your credits, and your usage and subscription history on our servers.</p>
+    <p data-lang="es">Si eliminas tu cuenta, tu credencial de acceso (correo electrónico y datos de autenticación) se elimina de nuestro sistema de inmediato, de forma irreversible. Sin embargo, <strong>los registros de créditos, uso y suscripciones no se eliminan</strong>: se conservan de forma indefinida, pero desvinculados de tu identidad — se elimina toda referencia a tu usuario en esas filas y el correo electrónico se sustituye por una huella criptográfica (HMAC-SHA256) irreversible, con la única finalidad de reconocer cuentas recurrentes y evitar el abuso del sistema de créditos gratuitos mediante registros duplicados o reinstalaciones, en base al interés legítimo del art. 6.1.f RGPD. Esta huella y los registros asociados siguen siendo datos personales seudonimizados, no anónimos, y por tanto sujetos al RGPD.</p>
+    <p data-lang="en">If you delete your account, your access credential (email address and authentication data) is removed from our system immediately and irreversibly. However, <strong>your credit, usage and subscription records are not deleted</strong>: they are kept indefinitely, but disconnected from your identity — all reference to your user account is removed from those rows, and your email address is replaced with an irreversible cryptographic hash (HMAC-SHA256), solely to recognise recurring accounts and prevent abuse of the free credit system through duplicate registrations or reinstallations, based on the legitimate interest under Art. 6.1.f GDPR. This hash and the associated records remain pseudonymised personal data, not anonymous data, and therefore remain subject to the GDPR.</p>
+    <p data-lang="es">Los manuales digitalizados, partidas, jugadores, notas, estadísticas, las fotografías que adjuntas (en consultas visuales o en partidas registradas), las portadas de los juegos y las viñetas de cómic generadas se almacenan únicamente en tu propio dispositivo, no en nuestros servidores. Eliminar tu cuenta no borra este contenido: permanece en tu dispositivo hasta que lo elimines manualmente desde la app o desinstales TrueRules.</p>
+    <p data-lang="en">Digitised manuals, matches, players, notes, stats, the photos you attach (in visual queries or logged matches), game cover images and generated comic-strip panels are stored only on your own device, not on our servers. Deleting your account does not erase this content: it remains on your device until you delete it manually from the app or uninstall TrueRules.</p>
     <div class="divider"></div>
     <h2 data-lang="es">7. Seguridad</h2>
     <h2 data-lang="en">7. Security</h2>
@@ -179,8 +232,8 @@
     <div class="divider"></div>
     <h2 data-lang="es">8. Eliminación de cuenta</h2>
     <h2 data-lang="en">8. Account deletion</h2>
-    <p data-lang="es">Puedes eliminar tu cuenta en cualquier momento desde <strong>Ajustes → Cuenta → Eliminar cuenta y datos</strong> en la app. Esta acción es irreversible y elimina tus datos de servidor en un plazo máximo de 30 días, con la excepción de la huella criptográfica descrita en la sección 6. El contenido almacenado localmente en tu dispositivo (manuales, partidas, estadísticas) no se ve afectado por esta acción — consulta la sección 6.</p>
-    <p data-lang="en">You can delete your account at any time from <strong>Settings → Account → Delete account and data</strong> in the app. This action is irreversible and deletes your server-side data within a maximum of 30 days, with the exception of the cryptographic hash described in section 6. Content stored locally on your device (manuals, matches, stats) is not affected by this action — see section 6.</p>
+    <p data-lang="es">Puedes eliminar tu cuenta desde <strong>Ajustes → Cuenta → Eliminar cuenta y datos</strong> en la app. Si tienes una suscripción activa o en pausa, primero debes cancelarla desde Google Play — mientras exista una suscripción activa o pausada, no es posible eliminar la cuenta. Una vez cancelada, la eliminación es irreversible: tu credencial de acceso se borra de inmediato, y tus registros de uso y suscripciones se conservan de forma indefinida pero desvinculados de tu identidad, según se explica en la sección 6. El contenido almacenado localmente en tu dispositivo (manuales, partidas, estadísticas) no se ve afectado por esta acción — consulta la sección 6.</p>
+    <p data-lang="en">You can delete your account from <strong>Settings → Account → Delete account and data</strong> in the app. If you have an active or paused subscription, you must first cancel it via Google Play — account deletion is not possible while a subscription is active or paused. Once cancelled, deletion is irreversible: your access credential is removed immediately, and your usage and subscription records are kept indefinitely but disconnected from your identity, as explained in section 6. Content stored locally on your device (manuals, matches, stats) is not affected by this action — see section 6.</p>
     <p data-lang="es">Si no puedes acceder a la app, escríbenos a <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
     <p data-lang="en">If you cannot access the app, write to us at <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
     <div class="divider"></div>
@@ -206,7 +259,8 @@
     <p data-lang="es"><a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
     <p data-lang="en"><a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
     <div class="footer">
-      <p>© 2026 TrueRules · <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
+      <p data-lang="es">© 2026 TrueRules · <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a> · <a href="/terms-of-service">Términos de uso</a></p>
+      <p data-lang="en">© 2026 TrueRules · <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a> · <a href="/terms-of-service">Terms of service</a></p>
     </div>
   </div>
   <script>
