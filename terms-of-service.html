@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --cream: #f5f0e8;
       --amber: #8b6914;
@@ -19,7 +18,6 @@
       --border: #e8ddd0;
       --white: #ffffff;
     }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background-color: var(--cream);
@@ -27,7 +25,6 @@
       line-height: 1.7;
       font-size: 16px;
     }
-
     header {
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -36,7 +33,6 @@
       align-items: center;
       justify-content: space-between;
     }
-
     .logo {
       font-family: 'Playfair Display', serif;
       font-weight: 900;
@@ -45,24 +41,19 @@
       text-decoration: none;
       letter-spacing: -0.5px;
     }
-
     .logo span { color: var(--amber); }
-
     .header-right {
       display: flex;
       align-items: center;
       gap: 16px;
     }
-
     nav a {
       font-size: 14px;
       color: var(--text-muted);
       text-decoration: none;
       font-weight: 500;
     }
-
     nav a:hover { color: var(--amber); }
-
     .lang-btn {
       background: var(--cream);
       border: 1px solid var(--border);
@@ -75,19 +66,16 @@
       font-family: 'DM Sans', sans-serif;
       transition: border-color 0.2s;
     }
-
     .lang-btn:hover {
       border-color: var(--amber-light);
       color: var(--amber);
     }
-
     .hero {
       background: var(--white);
       border-bottom: 1px solid var(--border);
       padding: 56px 24px 40px;
       text-align: center;
     }
-
     .hero-eyebrow {
       font-size: 11px;
       font-weight: 600;
@@ -96,7 +84,6 @@
       color: var(--amber-light);
       margin-bottom: 12px;
     }
-
     .hero h1 {
       font-family: 'Playfair Display', serif;
       font-weight: 900;
@@ -105,15 +92,12 @@
       line-height: 1.15;
       margin-bottom: 16px;
     }
-
     .hero-meta { font-size: 14px; color: var(--text-muted); }
-
     .container {
       max-width: 760px;
       margin: 0 auto;
       padding: 48px 24px 80px;
     }
-
     .toc {
       background: var(--white);
       border: 1px solid var(--border);
@@ -121,7 +105,6 @@
       padding: 24px 28px;
       margin-bottom: 40px;
     }
-
     .toc-title {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
@@ -129,28 +112,23 @@
       color: var(--text);
       margin-bottom: 14px;
     }
-
     .toc ol {
       padding-left: 20px;
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
-
     .toc a {
       font-size: 14px;
       color: var(--amber);
       text-decoration: none;
       font-weight: 500;
     }
-
     .toc a:hover { text-decoration: underline; }
-
     .section {
       margin-bottom: 48px;
       scroll-margin-top: 24px;
     }
-
     .section-number {
       font-size: 11px;
       font-weight: 600;
@@ -159,7 +137,6 @@
       color: var(--amber-light);
       margin-bottom: 8px;
     }
-
     .section h2 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
@@ -168,15 +145,12 @@
       margin-bottom: 16px;
       line-height: 1.3;
     }
-
     .section p {
       font-size: 15px;
       color: var(--text);
       margin-bottom: 12px;
     }
-
     .section p:last-child { margin-bottom: 0; }
-
     .section ul, .section ol {
       padding-left: 20px;
       margin-bottom: 12px;
@@ -184,9 +158,7 @@
       flex-direction: column;
       gap: 6px;
     }
-
     .section li { font-size: 15px; color: var(--text); }
-
     .highlight-card {
       background: var(--white);
       border: 1.5px solid var(--amber-light);
@@ -194,35 +166,27 @@
       padding: 20px 24px;
       margin: 20px 0;
     }
-
     .highlight-card p { margin-bottom: 0; font-size: 15px; }
     .highlight-card strong { color: var(--amber); }
-
     .section-divider {
       height: 1px;
       background: var(--border);
       margin-bottom: 48px;
     }
-
     footer {
       background: var(--white);
       border-top: 1px solid var(--border);
       padding: 32px 24px;
       text-align: center;
     }
-
     footer p { font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-
     footer a {
       color: var(--amber);
       text-decoration: none;
       font-weight: 500;
     }
-
     footer a:hover { text-decoration: underline; }
-
     [data-lang="en"] { display: none; }
-
     @media (max-width: 600px) {
       .hero { padding: 40px 20px 32px; }
       .container { padding: 32px 20px 64px; }
@@ -231,7 +195,116 @@
   </style>
 </head>
 <body>
+  <!--
+    NOTAS DE LA REVISIÓN (agosto 2026)
 
+    Este documento se ha revisado contra el código real del backend
+    (handlers /api/chat, /api/embeddings, /api/ocr, /api/delete-account,
+    /api/revenuecat-webhook), no solo contra la documentación del proyecto.
+    Cambios aplicados:
+
+    1) Sección 4 (Planes y suscripciones): el texto original describía 2
+       grupos de suscripción con 8 planes en total (incluyendo un grupo
+       "Visual" independiente). El código del webhook de RevenueCat
+       confirma explícitamente que solo existe UN grupo de suscripción,
+       "chat_ocr" — "Visual" existe únicamente como add-on de compra única,
+       no como plan de suscripción. Se ha sustituido la lista de planes por
+       un texto genérico con un aviso [EN REVISIÓN] hasta poder confirmar
+       los nombres/precios exactos de los niveles contra planCatalog.js
+       (no compartido todavía). Se ha añadido también la regla, confirmada
+       en el código, de que los add-ons solo pueden comprarse con una
+       suscripción chat_ocr activa.
+
+    2) Sección 5 (Sistema de créditos): reescrita para distinguir
+       "créditos del plan" (se reinician cada ciclo, se consumen primero)
+       de "créditos extra / add-ons" (NO se reinician cada ciclo, se
+       conservan mientras la suscripción chat_ocr siga activa hasta un
+       máximo por tipo, se pierden con el reembolso o la expiración real,
+       pero no con una simple cancelación mientras el acceso siga vigente).
+       Esta distinción no existía en el texto original.
+
+    3) Sección 6 (Cambios y cancelaciones): reescrita en base al código
+       real de facturación. Confirmado por comentarios del propio código
+       (resultado de pruebas reales con Google Play Billing): la subida de
+       plan es inmediata y se cobra el precio completo (con tope de días
+       acumulados); la bajada de plan es diferida al final del ciclo
+       (Google Play Billing no admite DEFERRED para subidas dentro del
+       mismo grupo). Se ha añadido un párrafo nuevo de "Reembolso"
+       (distinto de "Cancelación"): un reembolso corta el acceso y todos
+       los créditos de inmediato, mientras que una cancelación voluntaria
+       mantiene el acceso y los créditos hasta la expiración real del
+       ciclo ya pagado. También se aclara que una pausa no hace perder
+       créditos y que, al reanudar, no se concede un cupo nuevo completo
+       salvo que corresponda una renovación.
+
+    4) Sección 12 (Ley aplicable y jurisdicción): el enlace a la
+       plataforma europea de resolución de litigios en línea
+       (ec.europa.eu/consumers/odr) apuntaba a una plataforma que cerró
+       definitivamente el 20 de julio de 2025 (sustituida por el
+       Reglamento (UE) 2024/3228). Se ha sustituido por una referencia a
+       la Red de Centros Europeos del Consumidor (ECC-Net) y a las
+       entidades de resolución alternativa de litigios (ADR) nacionales.
+
+    5) Sección 4 (Planes y suscripciones) — cerrado el [EN REVISIÓN] tras
+       recibir planCatalog.js. Confirma tres niveles dentro de "chat_ocr"
+       (150/50, 400/150 y 800/300 créditos de OCR/chat al mes) y que
+       ningún nivel incluye créditos de consultas visuales en el cupo
+       mensual — las visuales son exclusivamente de add-on. Se han
+       incorporado también los topes reales de saldo acumulado de crédito
+       extra (600 OCR / 300 chat / 60 visual) en vez de la mención
+       genérica de "un máximo por tipo" que había antes.
+
+       AVISO IMPORTANTE no reflejado en el texto (es un tema operativo,
+       no de contenido legal): los comentarios de planCatalog.js indican
+       que, a fecha de esta revisión, los product_id de los add-ons
+       (chat/OCR/visual) están "pendientes de creación por el
+       desarrollador" en Play Console — es decir, el código ya está
+       preparado para venderlos pero los productos aún no existen en la
+       tienda. Si publicas estas condiciones de uso antes de crear esos
+       productos en Play Console, el texto describirá una función
+       (compra de add-ons) que un usuario no podrá completar realmente.
+       Recomiendo no publicar esta sección, o marcarla de nuevo como
+       provisional, hasta confirmar que esos productos están creados y
+       activos en Play Console.
+
+    PENDIENTE / NO TOCADO EN ESTA REVISIÓN:
+
+    - Sección 4: el nombre comercial exacto de cada nivel (el catálogo
+      solo tiene identificadores internos "casual"/"regular"/"enthusiast",
+      no necesariamente el nombre que ve el usuario) y el precio de cada
+      uno se han dejado remitidos a la ficha de Google Play en vez de
+      fijarlos en el texto, precisamente porque pueden no coincidir con
+      los identificadores internos y cambian con más frecuencia que este
+      documento.
+    - Sección 7 (Derecho de desistimiento): se mantiene la "Nota
+      provisional" tal cual estaba. La calificación de TrueRules como
+      "contenido digital no prestado en soporte material" (art. 16(m),
+      pérdida total del derecho) frente a "servicio" (art. 14(3)-(4),
+      el derecho se mantiene pero con pago proporcional al uso) es una
+      cuestión de calificación legal que requiere asesoría profesional,
+      no una decisión que deba tomar por mi cuenta.
+    - Sección 9 (Propiedad intelectual): se mantiene el texto original,
+      que traslada al usuario la responsabilidad sobre los manuales que
+      carga. No he modificado esta sección, pero señalo aquí un riesgo
+      relevante detectado al revisar el system prompt de /api/chat: el
+      servicio instruye a la IA a traducir el contenido del manual
+      cuando el usuario lo pide. En derecho español (art. 21.1 TRLPI), la
+      traducción es un acto de "transformación" que requiere autorización
+      del titular de los derechos, distinto del derecho de cita o
+      reproducción. Además, la sentencia del TJUE en el asunto VCAST
+      (C-265/16) establece que un servicio en la nube que realiza
+      "activamente" la copia por cuenta del usuario no se beneficia de la
+      excepción de copia privada, lo que es directamente relevante para
+      la digitalización de manuales que hace el backend de TrueRules.
+      Esto no invalida necesariamente la cláusula actual, pero sugiere que
+      la responsabilidad no recae únicamente en el usuario que sube el
+      manual. Recomiendo revisión legal específica de este punto antes de
+      publicar, en línea con el riesgo 8.2 ya identificado en el propio
+      documento de riesgos del proyecto.
+    - Fecha "Última actualización": actualizada de julio a agosto de 2026
+      para reflejar la fecha de esta revisión. Confírmalo o ajústalo si
+      prefieres otra fecha.
+  -->
   <header>
     <a href="/" class="logo">True<span>Rules</span></a>
     <div class="header-right">
@@ -242,18 +315,15 @@
       <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">EN</button>
     </div>
   </header>
-
   <div class="hero">
     <p class="hero-eyebrow" data-lang="es">Condiciones legales</p>
     <p class="hero-eyebrow" data-lang="en">Legal</p>
     <h1 data-lang="es">Términos de uso</h1>
     <h1 data-lang="en">Terms of Service</h1>
-    <p class="hero-meta" data-lang="es">Última actualización: julio de 2026 · Vigentes desde: julio de 2026</p>
-    <p class="hero-meta" data-lang="en">Last updated: July 2026 · Effective from: July 2026</p>
+    <p class="hero-meta" data-lang="es">Última actualización: agosto de 2026 · Vigentes desde: julio de 2026</p>
+    <p class="hero-meta" data-lang="en">Last updated: August 2026 · Effective from: July 2026</p>
   </div>
-
   <div class="container">
-
     <!-- Índice ES -->
     <div class="toc" data-lang="es">
       <p class="toc-title">Contenido</p>
@@ -273,7 +343,6 @@
         <li><a href="#s13">Contacto</a></li>
       </ol>
     </div>
-
     <!-- Índice EN -->
     <div class="toc" data-lang="en">
       <p class="toc-title">Contents</p>
@@ -293,7 +362,6 @@
         <li><a href="#s13">Contact</a></li>
       </ol>
     </div>
-
     <!-- S1 -->
     <div class="section" id="s1">
       <p class="section-number">01</p>
@@ -305,7 +373,6 @@
       <p data-lang="en">By using TrueRules, you agree to these Terms of Service in full. If you do not accept them, you must not use the service.</p>
     </div>
     <div class="section-divider"></div>
-
     <!-- S2 -->
     <div class="section" id="s2">
       <p class="section-number">02</p>
@@ -329,7 +396,6 @@
       <p data-lang="en">The service uses third-party AI models to process manuals and answer queries. Answers are based on the manual content uploaded by the user and do not replace reading the official rulebook.</p>
     </div>
     <div class="section-divider"></div>
-
     <!-- S3 -->
     <div class="section" id="s3">
       <p class="section-number">03</p>
@@ -353,26 +419,31 @@
       <p data-lang="en">When registering, you must be at least 18 years old or the legal age of majority in your country of residence.</p>
     </div>
     <div class="section-divider"></div>
-
     <!-- S4 -->
     <div class="section" id="s4">
       <p class="section-number">04</p>
       <h2 data-lang="es">Planes y suscripciones</h2>
       <h2 data-lang="en">Plans and subscriptions</h2>
-      <p data-lang="es">TrueRules ofrece dos grupos de suscripción independientes y compatibles entre sí:</p>
-      <p data-lang="en">TrueRules offers two independent, mutually compatible subscription groups:</p>
+      <p data-lang="es">TrueRules ofrece una única suscripción mensual ("chat_ocr") con tres niveles. Cada nivel incluye un cupo mensual de créditos de digitalización (OCR) y de consultas por chat:</p>
+      <p data-lang="en">TrueRules offers a single monthly subscription ("chat_ocr") with three tiers. Each tier includes a monthly allowance of manual digitisation (OCR) credits and chat query credits:</p>
       <ul data-lang="es">
-        <li><strong>Chat y OCR:</strong> incluye créditos para digitalizar manuales (OCR) y realizar consultas de reglas por chat. Disponible en seis planes: Casual, Habitual, Entusiasta, Solo Chat S, Solo Chat M y Solo Chat L.</li>
-        <li><strong>Visual:</strong> incluye créditos para consultas visuales mediante fotografía. Disponible en dos planes: Visual Lite y Visual Pro.</li>
+        <li><strong>Nivel básico:</strong> 150 créditos de OCR y 50 de chat al mes.</li>
+        <li><strong>Nivel intermedio:</strong> 400 créditos de OCR y 150 de chat al mes.</li>
+        <li><strong>Nivel avanzado:</strong> 800 créditos de OCR y 300 de chat al mes.</li>
       </ul>
       <ul data-lang="en">
-        <li><strong>Chat & OCR:</strong> includes credits to digitise manuals (OCR) and ask rules questions via chat. Available in six plans: Casual, Regular, Enthusiast, Chat Only S, Chat Only M and Chat Only L.</li>
-        <li><strong>Visual:</strong> includes credits for visual queries using photos. Available in two plans: Visual Lite and Visual Pro.</li>
+        <li><strong>Basic tier:</strong> 150 OCR credits and 50 chat credits per month.</li>
+        <li><strong>Mid tier:</strong> 400 OCR credits and 150 chat credits per month.</li>
+        <li><strong>Advanced tier:</strong> 800 OCR credits and 300 chat credits per month.</li>
       </ul>
+      <p data-lang="es">Ninguno de los tres niveles incluye créditos de consultas visuales en su cupo mensual: las consultas visuales solo están disponibles mediante el paquete adicional correspondiente (ver más abajo). El nombre comercial y el precio exacto de cada nivel son los que se muestran en la ficha de la app en Google Play en el momento de la compra.</p>
+      <p data-lang="en">None of the three tiers includes visual-query credits in its monthly allowance: visual queries are only available via the corresponding add-on pack (see below). The commercial name and exact price of each tier are those shown on the app's Google Play listing at the time of purchase.</p>
       <p data-lang="es">Cada suscripción tiene un periodo de facturación mensual con renovación automática. El cobro se realiza a través de Google Play en el momento de la compra y en cada renovación.</p>
       <p data-lang="en">Each subscription has a monthly billing period with automatic renewal. Payment is processed through Google Play at the time of purchase and on each renewal.</p>
       <p data-lang="es">Los precios incluyen el IVA o impuesto equivalente aplicable en tu país. El precio exacto puede variar ligeramente entre países de la zona euro por diferencias en los tipos impositivos locales.</p>
       <p data-lang="en">Prices include VAT or equivalent tax applicable in your country. The exact price may vary slightly between eurozone countries due to differences in local tax rates.</p>
+      <p data-lang="es">Además de los créditos incluidos en la suscripción, existen paquetes adicionales de crédito ("add-ons") de compra única para OCR, chat y consultas visuales, solo disponibles mientras tienes una suscripción chat_ocr activa. El saldo acumulado de crédito extra por tipo tiene un máximo: 600 créditos de OCR, 300 de chat y 60 de consultas visuales. Alcanzado ese máximo, no puedes comprar más paquetes del mismo tipo hasta consumir parte del saldo existente.</p>
+      <p data-lang="en">In addition to the credits included in the subscription, there are one-time "add-on" credit packs for OCR, chat and visual queries, available only while you have an active chat_ocr subscription. The accumulated extra-credit balance per type has a maximum: 600 OCR credits, 300 chat credits and 60 visual-query credits. Once that maximum is reached, you cannot purchase further packs of the same type until part of the existing balance has been used.</p>
       <div class="highlight-card" data-lang="es">
         <p><strong>Créditos de prueba:</strong> los nuevos usuarios reciben un número limitado de créditos gratuitos al registrarse para que puedan probar el servicio antes de suscribirse.</p>
       </div>
@@ -381,53 +452,48 @@
       </div>
     </div>
     <div class="section-divider"></div>
-
     <!-- S5 -->
     <div class="section" id="s5">
       <p class="section-number">05</p>
       <h2 data-lang="es">Sistema de créditos</h2>
       <h2 data-lang="en">Credit system</h2>
-      <p data-lang="es">Cada plan incluye un número de créditos por ciclo mensual:</p>
-      <p data-lang="en">Each plan includes a number of credits per monthly cycle:</p>
+      <p data-lang="es">Existen dos tipos de crédito, con reglas distintas:</p>
+      <p data-lang="en">There are two types of credit, with different rules:</p>
       <ul data-lang="es">
-        <li><strong>Créditos OCR:</strong> se consumen al digitalizar páginas de manuales.</li>
-        <li><strong>Créditos de chat:</strong> se consumen al realizar consultas de reglas por escrito o por voz.</li>
-        <li><strong>Créditos visuales:</strong> se consumen al adjuntar fotografías en consultas.</li>
+        <li><strong>Créditos del plan:</strong> el cupo incluido en tu suscripción mensual (OCR y chat). Se consumen primero. No utilizados al final del ciclo, no se acumulan ni se transfieren al ciclo siguiente: se reinician al valor del plan en cada renovación o cambio de plan.</li>
+        <li><strong>Créditos extra (add-ons):</strong> los que compras aparte, como paquete adicional (OCR, chat o visual). Se consumen únicamente después de agotar los créditos del plan. A diferencia de los créditos del plan, <strong>no se reinician en cada ciclo</strong>: se conservan mientras tu suscripción chat_ocr siga activa, hasta un saldo máximo por tipo. Se pierden si tu suscripción es reembolsada o llega a su expiración real; no se pierden por una simple cancelación mientras el acceso siga vigente.</li>
       </ul>
       <ul data-lang="en">
-        <li><strong>OCR credits:</strong> consumed when digitising manual pages.</li>
-        <li><strong>Chat credits:</strong> consumed when asking rules questions by text or voice.</li>
-        <li><strong>Visual credits:</strong> consumed when attaching photos to queries.</li>
+        <li><strong>Plan credits:</strong> the allowance included in your monthly subscription (OCR and chat). Consumed first. Unused at the end of the cycle, they do not carry over to the next cycle: they reset to the plan's allowance on each renewal or plan change.</li>
+        <li><strong>Extra credits (add-ons):</strong> the ones you buy separately, as an additional pack (OCR, chat or visual). Consumed only after plan credits are exhausted. Unlike plan credits, <strong>they do not reset each cycle</strong>: they are kept for as long as your chat_ocr subscription remains active, up to a maximum balance per type. They are lost if your subscription is refunded or reaches real expiration; they are not lost by a simple cancellation while access remains in effect.</li>
       </ul>
       <div class="highlight-card" data-lang="es">
-        <p><strong>Política de uso o pérdida:</strong> los créditos no utilizados al final de cada ciclo mensual <strong>no se acumulan ni se transfieren</strong> al ciclo siguiente. Se reinician al valor del plan contratado en cada renovación o cambio de plan. Esta política aplica sin excepciones.</p>
+        <p><strong>Política de uso o pérdida (créditos del plan):</strong> los créditos del plan no utilizados al final de cada ciclo mensual <strong>no se acumulan ni se transfieren</strong> al ciclo siguiente. Esta política aplica sin excepciones.</p>
       </div>
       <div class="highlight-card" data-lang="en">
-        <p><strong>Use-it-or-lose-it policy:</strong> unused credits at the end of each monthly cycle <strong>do not carry over or accumulate</strong> to the next cycle. They reset to the plan's full allowance on each renewal or plan change. This policy applies without exception.</p>
+        <p><strong>Use-it-or-lose-it policy (plan credits):</strong> unused plan credits at the end of each monthly cycle <strong>do not carry over or accumulate</strong> to the next cycle. This policy applies without exception.</p>
       </div>
-      <p data-lang="es">Los planes de la línea "Solo Chat" únicamente incluyen créditos de chat y no permiten digitalizar manuales. Para digitalizar manuales es necesario contratar un plan de la línea Chat y OCR (Casual, Habitual o Entusiasta).</p>
-      <p data-lang="en">Chat Only plans include only chat credits and do not allow manual digitisation. To digitise manuals, a Chat & OCR plan (Casual, Regular or Enthusiast) is required.</p>
-      <p data-lang="es">Los planes Visual únicamente incluyen créditos para consultas visuales. Para usar consultas visuales con contexto del manual, es necesario tener manuales previamente digitalizados.</p>
-      <p data-lang="en">Visual plans include only visual query credits. To use visual queries with manual context, previously digitised manuals are required.</p>
     </div>
     <div class="section-divider"></div>
-
     <!-- S6 -->
     <div class="section" id="s6">
       <p class="section-number">06</p>
       <h2 data-lang="es">Cambios y cancelaciones</h2>
       <h2 data-lang="en">Changes and cancellations</h2>
-      <p data-lang="es"><strong>Cambio de plan:</strong> puedes cambiar de plan en cualquier momento. El cambio tiene efecto inmediato y se cobra el precio completo del nuevo plan en ese momento. Los créditos restantes del plan anterior se pierden y se asignan los créditos del nuevo plan. Los días restantes del ciclo anterior se añaden al final del nuevo ciclo de facturación.</p>
-      <p data-lang="en"><strong>Plan change:</strong> you can change your plan at any time. The change takes effect immediately and the full price of the new plan is charged at that moment. Remaining credits from the previous plan are lost and the new plan's credits are assigned. Any remaining days from the previous billing cycle are added to the end of the new billing cycle.</p>
-      <p data-lang="es"><strong>Cancelación:</strong> puedes cancelar tu suscripción en cualquier momento desde el Centro de suscripciones de Google Play. La cancelación no es inmediata: el acceso continúa hasta el final del ciclo de facturación ya pagado, momento en el que la suscripción expira y los créditos restantes se pierden.</p>
-      <p data-lang="en"><strong>Cancellation:</strong> you can cancel your subscription at any time from the Google Play Subscription Centre. Cancellation is not immediate: access continues until the end of the already-paid billing cycle, at which point the subscription expires and remaining credits are lost.</p>
-      <p data-lang="es"><strong>Pausa:</strong> puedes pausar tu suscripción desde Google Play. La pausa se aplica al finalizar el ciclo en curso. Durante la pausa no tienes acceso al servicio y no se realizan cobros. Al reanudar, comienza un nuevo ciclo con el cupo completo del plan.</p>
-      <p data-lang="en"><strong>Pause:</strong> you can pause your subscription from Google Play. The pause takes effect at the end of the current cycle. During the pause you have no access to the service and no charges are made. On resumption, a new cycle begins with the plan's full allowance.</p>
+      <p data-lang="es"><strong>Subida de plan (upgrade):</strong> tiene efecto inmediato y se cobra el precio completo del nuevo plan en ese momento, sujeto a un tope máximo de días de suscripción acumulados. Los créditos del plan anterior se pierden y se asignan los del nuevo plan.</p>
+      <p data-lang="en"><strong>Plan upgrade:</strong> takes effect immediately and the full price of the new plan is charged at that moment, subject to a maximum cap on accumulated subscription days. Credits from the previous plan are lost and the new plan's credits are assigned.</p>
+      <p data-lang="es"><strong>Bajada de plan (downgrade):</strong> no tiene efecto inmediato. Se aplica de forma diferida, al finalizar el ciclo de facturación en curso: mantienes el plan y los créditos actuales hasta entonces, y el nuevo plan (con su precio y cupo) entra en vigor en la siguiente renovación. No se cobra nada en el momento del cambio.</p>
+      <p data-lang="en"><strong>Plan downgrade:</strong> does not take effect immediately. It is applied on a deferred basis, at the end of the current billing cycle: you keep your current plan and credits until then, and the new plan (with its price and allowance) takes effect at the next renewal. Nothing is charged at the time of the change.</p>
+      <p data-lang="es"><strong>Cancelación:</strong> puedes cancelar tu suscripción en cualquier momento desde el Centro de suscripciones de Google Play. La cancelación no es inmediata: el acceso, y tanto los créditos del plan como los créditos extra, continúan hasta el final del ciclo de facturación ya pagado. Al llegar la fecha de expiración real, el acceso termina y todos los créditos (de plan y extra) se pierden.</p>
+      <p data-lang="en"><strong>Cancellation:</strong> you can cancel your subscription at any time from the Google Play Subscription Centre. Cancellation is not immediate: access, and both plan and extra credits, continue until the end of the already-paid billing cycle. When the real expiration date arrives, access ends and all credits (plan and extra) are lost.</p>
+      <p data-lang="es"><strong>Reembolso:</strong> si Google Play concede un reembolso de tu suscripción, el acceso y todos los créditos (de plan y extra) se cortan de inmediato, no al final del ciclo.</p>
+      <p data-lang="en"><strong>Refund:</strong> if Google Play grants a refund for your subscription, access and all credits (plan and extra) are cut off immediately, not at the end of the cycle.</p>
+      <p data-lang="es"><strong>Pausa:</strong> puedes pausar tu suscripción desde Google Play. La pausa se aplica al finalizar el ciclo en curso. Durante la pausa no tienes acceso al servicio y no se realizan cobros; los créditos no se pierden por pausar. Al reanudar, se conservan los créditos que quedaban — no se concede un nuevo cupo completo salvo que corresponda una renovación.</p>
+      <p data-lang="en"><strong>Pause:</strong> you can pause your subscription from Google Play. The pause takes effect at the end of the current cycle. During the pause you have no access to the service and no charges are made; credits are not lost by pausing. On resumption, remaining credits are kept — a new full allowance is not granted unless a renewal is also due.</p>
       <p data-lang="es"><strong>Renovación anticipada:</strong> si has agotado tus créditos antes de que finalice el ciclo, puedes contratar de nuevo el mismo plan para obtener un nuevo cupo de forma inmediata.</p>
       <p data-lang="en"><strong>Early renewal:</strong> if you have used up your credits before the end of the cycle, you can subscribe to the same plan again to get a new allowance immediately.</p>
     </div>
     <div class="section-divider"></div>
-
     <!-- S7 -->
     <div class="section" id="s7">
       <p class="section-number">07</p>
@@ -447,7 +513,6 @@
       <p data-lang="en">If you wish to exercise your right of withdrawal before consuming any credits, you may do so by contacting us at <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a> within the 14-day period.</p>
     </div>
     <div class="section-divider"></div>
-
     <!-- S8 -->
     <div class="section" id="s8">
       <p class="section-number">08</p>
@@ -473,7 +538,6 @@
       <p data-lang="en">Breach of these conditions may result in suspension or termination of your account.</p>
     </div>
     <div class="section-divider"></div>
-
     <!-- S9 -->
     <div class="section" id="s9">
       <p class="section-number">09</p>
@@ -487,7 +551,6 @@
       <p data-lang="en">Board game names mentioned in the app are trademarks of their respective owners. TrueRules has no affiliation with or sponsorship from any board game publisher.</p>
     </div>
     <div class="section-divider"></div>
-
     <!-- S10 -->
     <div class="section" id="s10">
       <p class="section-number">10</p>
@@ -503,7 +566,6 @@
       <p data-lang="en">Nothing in these terms limits the rights that applicable consumer law grants to consumers and which cannot be excluded by contract.</p>
     </div>
     <div class="section-divider"></div>
-
     <!-- S11 -->
     <div class="section" id="s11">
       <p class="section-number">11</p>
@@ -515,7 +577,6 @@
       <p data-lang="en">Continued use of the service after the new terms are published implies acceptance. If you do not agree with the changes, you may cancel your subscription before they take effect.</p>
     </div>
     <div class="section-divider"></div>
-
     <!-- S12 -->
     <div class="section" id="s12">
       <p class="section-number">12</p>
@@ -523,11 +584,10 @@
       <h2 data-lang="en">Governing law and jurisdiction</h2>
       <p data-lang="es">Estos Términos se rigen por la legislación española. Para cualquier controversia derivada del uso del servicio, las partes se someten a los juzgados y tribunales competentes conforme a la normativa de consumo aplicable.</p>
       <p data-lang="en">These Terms are governed by Spanish law. For any dispute arising from the use of the service, the parties submit to the competent courts in accordance with applicable consumer regulations.</p>
-      <p data-lang="es">Si eres consumidor en la Unión Europea, también puedes acudir a la plataforma de resolución de litigios en línea de la Comisión Europea: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
-      <p data-lang="en">If you are a consumer in the European Union, you may also use the European Commission's online dispute resolution platform: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+      <p data-lang="es">Si eres consumidor en la Unión Europea y tienes una controversia con nosotros que no hayamos podido resolver directamente, puedes acudir a la <a href="https://www.ecc-net.eu/" target="_blank" rel="noopener">Red de Centros Europeos del Consumidor (ECC-Net)</a> o a una entidad de resolución alternativa de litigios (ADR) acreditada en tu país. La antigua plataforma europea de resolución de litigios en línea (ODR) dejó de estar operativa el 20 de julio de 2025.</p>
+      <p data-lang="en">If you are a consumer in the European Union and have a dispute with us that we have not been able to resolve directly, you can contact the <a href="https://www.ecc-net.eu/" target="_blank" rel="noopener">European Consumer Centres Network (ECC-Net)</a> or an accredited alternative dispute resolution (ADR) entity in your country. The former EU online dispute resolution (ODR) platform ceased operating on 20 July 2025.</p>
     </div>
     <div class="section-divider"></div>
-
     <!-- S13 -->
     <div class="section" id="s13">
       <p class="section-number">13</p>
@@ -541,9 +601,7 @@
         <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a></p>
       </div>
     </div>
-
   </div>
-
   <footer>
     <p>© 2026 TrueRules · <span data-lang="es">España</span><span data-lang="en">Spain</span></p>
     <p>
@@ -554,10 +612,8 @@
       <a href="/terms-of-service" data-lang="en">Terms of service</a>
     </p>
   </footer>
-
   <script>
     let currentLang = 'es';
-
     function setLang(lang) {
       currentLang = lang;
       document.documentElement.lang = lang;
@@ -569,14 +625,11 @@
       });
       document.getElementById('lang-toggle').textContent = lang === 'es' ? 'EN' : 'ES';
     }
-
     function toggleLang() {
       setLang(currentLang === 'es' ? 'en' : 'es');
     }
-
     const browserLang = navigator.language?.startsWith('es') ? 'es' : 'en';
     if (browserLang !== 'es') setLang('en');
   </script>
-
 </body>
 </html>
