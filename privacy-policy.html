@@ -119,6 +119,16 @@
        código sigue guardando esos contadores y ese estado de suscripción
        independientemente de lo que diga el texto.
 
+    5) Secciones 2 y 6 — eliminada la referencia a "viñetas de cómic
+       generadas por la IA". Aunque el código de la app (storage.ts) ya
+       tiene soporte para esta función, el usuario confirma que no estará
+       disponible en el lanzamiento inicial. Se ha retirado de ambas
+       secciones para no describir una función que el usuario todavía no
+       podrá usar. La nota 3 más arriba se deja tal cual, como registro
+       histórico de por qué se había añadido en su momento — si la
+       función de cómics se activa más adelante, hay que volver a añadir
+       la mención aquí.
+
     Sin tocar: retención indefinida del hash HMAC-SHA256 (sección 6) y el
     texto de la sección 7 de seguridad — quedan como en el original.
   -->
@@ -151,7 +161,7 @@
     <p data-lang="es">Recogemos distintos tipos de datos, con tratamientos muy diferentes entre sí. Lo más importante primero: <strong>el contenido de tus manuales, tus fotos, tus partidas y tus notas se almacena únicamente en tu dispositivo</strong>, no en nuestros servidores. Cuando ese contenido se envía a la IA para procesarlo — por ejemplo, para digitalizar una página o responder una consulta — la transmisión es puntual: se usa para esa operación y no se conserva en nuestros servidores una vez completada.</p>
     <p data-lang="en">We collect different kinds of data, and they are treated very differently. The most important point first: <strong>the content of your manuals, photos, matches and notes is stored only on your device</strong>, not on our servers. When that content is sent to the AI for processing — for example, to digitise a page or answer a query — the transmission is one-off: it is used for that single operation and is not retained on our servers afterwards.</p>
     <ul data-lang="es">
-      <li><strong>Contenido de manuales y consultas (solo en tu dispositivo; se envía puntualmente a la IA para procesarlo):</strong> imágenes y texto extraído de los manuales que subes; fotografías que adjuntas al hacer una consulta visual sobre un componente del juego; y las viñetas de cómic que la IA genera a partir del manual.</li>
+      <li><strong>Contenido de manuales y consultas (solo en tu dispositivo; se envía puntualmente a la IA para procesarlo):</strong> imágenes y texto extraído de los manuales que subes; y fotografías que adjuntas al hacer una consulta visual sobre un componente del juego.</li>
       <li><strong>Partidas y notas (solo en tu dispositivo, nunca se envían a nuestros servidores):</strong> jugadores, partidas registradas y las fotografías que les adjuntas, notas, estadísticas, y la imagen de portada que eliges para cada juego.</li>
       <li><strong>Datos de cuenta (en nuestros servidores, mientras tu cuenta está activa):</strong> correo electrónico y nombre de usuario al iniciar sesión con Google.</li>
       <li><strong>Datos de uso y suscripción (en nuestros servidores, mientras tu cuenta está activa):</strong> créditos disponibles, número de páginas digitalizadas y de consultas realizadas, y estado de tu suscripción — como contadores y estados, no como el contenido de tus manuales o consultas.</li>
@@ -159,7 +169,7 @@
       <li><strong>Voz:</strong> el audio del micrófono se procesa localmente en tu dispositivo con la API nativa de Android. TrueRules no recibe ni almacena el audio.</li>
     </ul>
     <ul data-lang="en">
-      <li><strong>Manual and query content (only on your device; sent one-off to the AI for processing):</strong> images and text extracted from the manuals you upload; photos you attach when making a visual query about a game component; and the comic-strip panels the AI generates from the manual.</li>
+      <li><strong>Manual and query content (only on your device; sent one-off to the AI for processing):</strong> images and text extracted from the manuals you upload; and photos you attach when making a visual query about a game component.</li>
       <li><strong>Matches and notes (only on your device, never sent to our servers):</strong> players, logged matches and the photos you attach to them, notes, stats, and the cover image you choose for each game.</li>
       <li><strong>Account data (on our servers, while your account is active):</strong> email address and username when signing in with Google.</li>
       <li><strong>Usage and subscription data (on our servers, while your account is active):</strong> available credits, the number of digitised pages and queries made, and your subscription status — as counters and states, not as the content of your manuals or queries.</li>
@@ -220,8 +230,8 @@
     <p data-lang="en">While your account is active, we keep your account data (email address, authentication credentials), your credits, and your usage and subscription history on our servers.</p>
     <p data-lang="es">Si eliminas tu cuenta, tu credencial de acceso (correo electrónico y datos de autenticación) se elimina de nuestro sistema de inmediato, de forma irreversible. Sin embargo, <strong>los registros de créditos, uso y suscripciones no se eliminan</strong>: se conservan de forma indefinida, pero desvinculados de tu identidad — se elimina toda referencia a tu usuario en esas filas y el correo electrónico se sustituye por una huella criptográfica (HMAC-SHA256) irreversible, con la única finalidad de reconocer cuentas recurrentes y evitar el abuso del sistema de créditos gratuitos mediante registros duplicados o reinstalaciones, en base al interés legítimo del art. 6.1.f RGPD. Esta huella y los registros asociados siguen siendo datos personales seudonimizados, no anónimos, y por tanto sujetos al RGPD.</p>
     <p data-lang="en">If you delete your account, your access credential (email address and authentication data) is removed from our system immediately and irreversibly. However, <strong>your credit, usage and subscription records are not deleted</strong>: they are kept indefinitely, but disconnected from your identity — all reference to your user account is removed from those rows, and your email address is replaced with an irreversible cryptographic hash (HMAC-SHA256), solely to recognise recurring accounts and prevent abuse of the free credit system through duplicate registrations or reinstallations, based on the legitimate interest under Art. 6.1.f GDPR. This hash and the associated records remain pseudonymised personal data, not anonymous data, and therefore remain subject to the GDPR.</p>
-    <p data-lang="es">Los manuales digitalizados, partidas, jugadores, notas, estadísticas, las fotografías que adjuntas (en consultas visuales o en partidas registradas), las portadas de los juegos y las viñetas de cómic generadas se almacenan únicamente en tu propio dispositivo, no en nuestros servidores. Eliminar tu cuenta no borra este contenido: permanece en tu dispositivo hasta que lo elimines manualmente desde la app o desinstales TrueRules.</p>
-    <p data-lang="en">Digitised manuals, matches, players, notes, stats, the photos you attach (in visual queries or logged matches), game cover images and generated comic-strip panels are stored only on your own device, not on our servers. Deleting your account does not erase this content: it remains on your device until you delete it manually from the app or uninstall TrueRules.</p>
+    <p data-lang="es">Los manuales digitalizados, partidas, jugadores, notas, estadísticas, las fotografías que adjuntas (en consultas visuales o en partidas registradas) y las portadas de los juegos se almacenan únicamente en tu propio dispositivo, no en nuestros servidores. Eliminar tu cuenta no borra este contenido: permanece en tu dispositivo hasta que lo elimines manualmente desde la app o desinstales TrueRules.</p>
+    <p data-lang="en">Digitised manuals, matches, players, notes, stats, the photos you attach (in visual queries or logged matches) and game cover images are stored only on your own device, not on our servers. Deleting your account does not erase this content: it remains on your device until you delete it manually from the app or uninstall TrueRules.</p>
     <div class="divider"></div>
     <h2 data-lang="es">7. Seguridad</h2>
     <h2 data-lang="en">7. Security</h2>
