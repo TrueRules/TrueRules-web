@@ -71,6 +71,7 @@
        la versión anterior decía "en cualquier momento", lo cual era
        falso. Las tres correcciones están verificadas directamente contra
        el código del endpoint, no son una suposición.
+       [Superada en parte por la nota 6: (a) y (b) han cambiado.]
 
     3) Sección 2 y 6 — ampliadas tras revisar storage.ts (código cliente,
        React Native/Expo, agosto 2026). El texto original de "Contenido
@@ -129,8 +130,35 @@
        función de cómics se activa más adelante, hay que volver a añadir
        la mención aquí.
 
-    Sin tocar: retención indefinida del hash HMAC-SHA256 (sección 6) y el
-    texto de la sección 7 de seguridad — quedan como en el original.
+    NOTAS DE LA REVISIÓN (octubre 2026):
+
+    6) Secciones 2, 3, 6 y 8 — conservación tras borrar la cuenta.
+       Verificado contra el código y la base de datos de octubre 2026
+       (archive_user, purge_archived_data diaria, delete-account.js,
+       settings.tsx). Cambios:
+       (a) Ya NO hay retención indefinida. Pruebas (compras, eventos de
+           suscripción, reembolsos de add-ons y consentimientos): 5 años
+           desde cada registro, bloqueadas (art. 32 LOPDGDD, art. 17.3.e
+           RGPD; plazo de 5 años del art. 1964 del Código Civil). Saldo
+           de créditos: solo mientras el plan sigue en vigor (plan
+           cancelado que no ha terminado: hasta el fin del periodo
+           pagado; sin plan en vigor: se borra en la purga diaria).
+           Registro de que existió la cuenta (deleted_accounts): 5 años,
+           para no repetir los créditos de prueba. Datos de uso técnico
+           (token_usage_log): anónimos, sin hash.
+       (b) El contenido local SÍ se borra al eliminar la cuenta desde la
+           app: claves de AsyncStorage y, desde la build de octubre 2026,
+           también las carpetas de páginas, portadas, imágenes de
+           consultas, cómics y embeddings. Las fotos de partidas son
+           referencias a la galería o la cámara del usuario: la imagen
+           original sigue en su galería. Publicar esta versión junto con
+           esa build, no antes.
+       (c) El bloqueo por suscripción activa o pausada se comprueba
+           también contra RevenueCat (estado real en Google Play).
+       (d) Sección 2 añade el registro de compras y consentimientos, que
+           ya se guardaba (consent_log, subscription_events) pero no se
+           mencionaba.
+       Decisión del titular sin asesor legal; revisar si se consulta a uno.
   -->
   <div class="container">
     <div class="header">
@@ -142,8 +170,8 @@
     </div>
     <h1 data-lang="es">Política de privacidad</h1>
     <h1 data-lang="en">Privacy Policy</h1>
-    <p class="date" data-lang="es">Última actualización: 25 de agosto de 2026</p>
-    <p class="date" data-lang="en">Last updated: 25 August 2026</p>
+    <p class="date" data-lang="es">Última actualización: 2 de octubre de 2026</p>
+    <p class="date" data-lang="en">Last updated: 2 October 2026</p>
     <div class="highlight" data-lang="es">
       TrueRules es una aplicación para jugadores de mesa que permite digitalizar manuales de juego y consultar reglas mediante inteligencia artificial.
     </div>
@@ -165,6 +193,7 @@
       <li><strong>Partidas y notas (solo en tu dispositivo, nunca se envían a nuestros servidores):</strong> jugadores, partidas registradas y las fotografías que les adjuntas, notas, estadísticas, y la imagen de portada que eliges para cada juego.</li>
       <li><strong>Datos de cuenta (en nuestros servidores, mientras tu cuenta está activa):</strong> correo electrónico y nombre de usuario al iniciar sesión con Google.</li>
       <li><strong>Datos de uso y suscripción (en nuestros servidores, mientras tu cuenta está activa):</strong> créditos disponibles, número de páginas digitalizadas y de consultas realizadas, y estado de tu suscripción — como contadores y estados, no como el contenido de tus manuales o consultas.</li>
+      <li><strong>Registro de compras y consentimientos (en nuestros servidores):</strong> las compras, renovaciones, cambios de plan, cancelaciones y reembolsos que nos comunica Google Play a través de RevenueCat (producto, fecha e importe), y el consentimiento que aceptas al comprar (versión del texto aceptado, fecha e idioma).</li>
       <li><strong>Datos técnicos:</strong> versión de la app, tipo de dispositivo e idioma del sistema.</li>
       <li><strong>Voz:</strong> el audio del micrófono se procesa localmente en tu dispositivo con la API nativa de Android. TrueRules no recibe ni almacena el audio.</li>
     </ul>
@@ -173,6 +202,7 @@
       <li><strong>Matches and notes (only on your device, never sent to our servers):</strong> players, logged matches and the photos you attach to them, notes, stats, and the cover image you choose for each game.</li>
       <li><strong>Account data (on our servers, while your account is active):</strong> email address and username when signing in with Google.</li>
       <li><strong>Usage and subscription data (on our servers, while your account is active):</strong> available credits, the number of digitised pages and queries made, and your subscription status — as counters and states, not as the content of your manuals or queries.</li>
+      <li><strong>Record of purchases and consents (on our servers):</strong> the purchases, renewals, plan changes, cancellations and refunds that Google Play reports to us through RevenueCat (product, date and amount), and the consent you accept when purchasing (version of the accepted text, date and language).</li>
       <li><strong>Technical data:</strong> app version, device type and system language.</li>
       <li><strong>Voice:</strong> microphone audio is processed locally on your device using Android's native API. TrueRules does not receive or store audio.</li>
     </ul>
@@ -181,20 +211,22 @@
     <h2 data-lang="en">3. How we use your data</h2>
     <ul data-lang="es">
       <li>Prestarte el servicio: digitalizar manuales, responder consultas de reglas, registrar partidas y estadísticas.</li>
-      <li>Gestionar tu cuenta y tus créditos de uso.</li>
+      <li>Gestionar tu cuenta, tus créditos de uso y tus compras.</li>
       <li>Enviarte comunicaciones relacionadas con el servicio.</li>
       <li>Mejorar el servicio mediante análisis agregados y anónimos.</li>
       <li>Prevenir el uso fraudulento del sistema de créditos gratuitos.</li>
+      <li>Conservar la prueba de tus compras y de los consentimientos que aceptas, para poder atender posibles reclamaciones.</li>
     </ul>
     <ul data-lang="en">
       <li>Provide the service: digitise manuals, answer rules queries, log matches and stats.</li>
-      <li>Manage your account and usage credits.</li>
+      <li>Manage your account, your usage credits and your purchases.</li>
       <li>Send you service-related communications.</li>
       <li>Improve the service through aggregated, anonymous analysis.</li>
       <li>Prevent fraudulent use of the free credit system.</li>
+      <li>Keep proof of your purchases and of the consents you accept, so that we can handle possible claims.</li>
     </ul>
-    <p data-lang="es">Base legal: ejecución del contrato (art. 6.1.b RGPD) e interés legítimo para prevención de fraude (art. 6.1.f RGPD).</p>
-    <p data-lang="en">Legal basis: performance of the service contract (Art. 6.1.b GDPR) and legitimate interest for fraud prevention (Art. 6.1.f GDPR).</p>
+    <p data-lang="es">Base legal: ejecución del contrato (art. 6.1.b RGPD) e interés legítimo para la prevención del fraude y para la defensa frente a posibles reclamaciones (art. 6.1.f RGPD).</p>
+    <p data-lang="en">Legal basis: performance of the service contract (Art. 6.1.b GDPR) and legitimate interest for fraud prevention and for defending against possible claims (Art. 6.1.f GDPR).</p>
     <div class="divider"></div>
     <h2 data-lang="es">4. Con quién compartimos tus datos</h2>
     <h2 data-lang="en">4. Who we share your data with</h2>
@@ -226,12 +258,24 @@
     <div class="divider"></div>
     <h2 data-lang="es">6. Cuánto tiempo conservamos tus datos</h2>
     <h2 data-lang="en">6. How long we keep your data</h2>
-    <p data-lang="es">Mientras tu cuenta esté activa, conservamos en nuestros servidores tus datos de cuenta (correo electrónico, credenciales de autenticación), tus créditos y tu historial de uso y de suscripciones.</p>
-    <p data-lang="en">While your account is active, we keep your account data (email address, authentication credentials), your credits, and your usage and subscription history on our servers.</p>
-    <p data-lang="es">Si eliminas tu cuenta, tu credencial de acceso (correo electrónico y datos de autenticación) se elimina de nuestro sistema de inmediato, de forma irreversible. Sin embargo, <strong>los registros de créditos, uso y suscripciones no se eliminan</strong>: se conservan de forma indefinida, pero desvinculados de tu identidad — se elimina toda referencia a tu usuario en esas filas y el correo electrónico se sustituye por una huella criptográfica (HMAC-SHA256) irreversible, con la única finalidad de reconocer cuentas recurrentes y evitar el abuso del sistema de créditos gratuitos mediante registros duplicados o reinstalaciones, en base al interés legítimo del art. 6.1.f RGPD. Esta huella y los registros asociados siguen siendo datos personales seudonimizados, no anónimos, y por tanto sujetos al RGPD.</p>
-    <p data-lang="en">If you delete your account, your access credential (email address and authentication data) is removed from our system immediately and irreversibly. However, <strong>your credit, usage and subscription records are not deleted</strong>: they are kept indefinitely, but disconnected from your identity — all reference to your user account is removed from those rows, and your email address is replaced with an irreversible cryptographic hash (HMAC-SHA256), solely to recognise recurring accounts and prevent abuse of the free credit system through duplicate registrations or reinstallations, based on the legitimate interest under Art. 6.1.f GDPR. This hash and the associated records remain pseudonymised personal data, not anonymous data, and therefore remain subject to the GDPR.</p>
-    <p data-lang="es">Los manuales digitalizados, partidas, jugadores, notas, estadísticas, las fotografías que adjuntas (en consultas visuales o en partidas registradas) y las portadas de los juegos se almacenan únicamente en tu propio dispositivo, no en nuestros servidores. Eliminar tu cuenta no borra este contenido: permanece en tu dispositivo hasta que lo elimines manualmente desde la app o desinstales TrueRules.</p>
-    <p data-lang="en">Digitised manuals, matches, players, notes, stats, the photos you attach (in visual queries or logged matches) and game cover images are stored only on your own device, not on our servers. Deleting your account does not erase this content: it remains on your device until you delete it manually from the app or uninstall TrueRules.</p>
+    <p data-lang="es">Mientras tu cuenta esté activa, conservamos en nuestros servidores tus datos de cuenta (correo electrónico, credenciales de autenticación), tus créditos, tu historial de uso y de suscripciones, y el registro de tus compras y consentimientos.</p>
+    <p data-lang="en">While your account is active, we keep your account data (email address, authentication credentials), your credits, your usage and subscription history, and the record of your purchases and consents on our servers.</p>
+    <p data-lang="es">Si eliminas tu cuenta, tu credencial de acceso (correo electrónico y datos de autenticación) se elimina de nuestro sistema de inmediato, de forma irreversible. No conservamos tu correo electrónico: lo sustituimos por un identificador seudonimizado (una huella HMAC-SHA256) que no permite obtener tu correo a partir de él. Con ese identificador conservamos únicamente lo siguiente:</p>
+    <p data-lang="en">If you delete your account, your access credential (email address and authentication data) is removed from our system immediately and irreversibly. We do not keep your email address: we replace it with a pseudonymised identifier (an HMAC-SHA256 hash) from which your email cannot be obtained. Using that identifier, we keep only the following:</p>
+    <ul data-lang="es">
+      <li><strong>El registro de tus compras, suscripciones, reembolsos y consentimientos</strong>, bloqueado y sin usarlo para ningún otro fin, durante <strong>5 años</strong> desde cada operación, solo para poder atender posibles reclamaciones y requerimientos de autoridades o tribunales, conforme al artículo 32 de la Ley Orgánica 3/2018 y al artículo 17.3.e) del RGPD. Pasado ese plazo se elimina.</li>
+      <li><strong>Tu saldo de créditos, solo si tenías un plan cancelado que aún no había terminado</strong>, hasta el final del periodo ya pagado, para poder devolvértelo si vuelves a registrarte con el mismo correo. Los créditos solo son válidos mientras el plan está en vigor: cuando termina, el saldo se elimina. Si no tenías un plan en vigor, el saldo se elimina en el plazo de un día. Si prefieres que lo eliminemos de inmediato, escríbenos a <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</li>
+      <li><strong>Un registro de que existió una cuenta con ese identificador</strong>, durante 5 años desde la eliminación, para no volver a conceder los créditos de prueba de bienvenida a una misma persona (interés legítimo en la prevención del fraude, art. 6.1.f RGPD).</li>
+    </ul>
+    <ul data-lang="en">
+      <li><strong>The record of your purchases, subscriptions, refunds and consents</strong>, blocked and not used for any other purpose, for <strong>5 years</strong> from each transaction, solely to handle possible claims and requests from authorities or courts, in accordance with Article 32 of Spanish Organic Law 3/2018 and Article 17(3)(e) GDPR. After that period it is deleted.</li>
+      <li><strong>Your credit balance, only if you had a cancelled plan that had not ended yet</strong>, until the end of the period already paid for, so we can give it back if you sign up again with the same email. Credits are only valid while the plan is in force: when it ends, the balance is deleted. If you did not have a plan in force, the balance is deleted within one day. If you would rather we delete it straight away, write to <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</li>
+      <li><strong>A record that an account with that identifier existed</strong>, for 5 years from deletion, so that the welcome trial credits are not granted again to the same person (legitimate interest in fraud prevention, Art. 6.1.f GDPR).</li>
+    </ul>
+    <p data-lang="es">Este identificador y los registros asociados son datos personales seudonimizados, no anónimos, y por tanto siguen sujetos al RGPD. Los datos técnicos de consumo del servicio se conservan de forma anónima, sin relación con ninguna persona.</p>
+    <p data-lang="en">This identifier and the associated records are pseudonymised personal data, not anonymous data, and therefore remain subject to the GDPR. Technical data on service consumption is kept anonymously, not linked to any person.</p>
+    <p data-lang="es">Los manuales digitalizados, partidas, jugadores, notas, estadísticas, las imágenes de tus consultas visuales y las portadas de los juegos se almacenan únicamente en tu propio dispositivo, no en nuestros servidores. Al eliminar tu cuenta desde la app, este contenido también se borra de tu dispositivo. Las fotografías que adjuntas a una partida proceden de tu galería o de tu cámara: la app no las copia, así que la imagen original sigue en tu galería. Si desinstalas TrueRules sin eliminar tu cuenta, el contenido local se borra con la app, pero tu cuenta sigue existiendo hasta que la elimines.</p>
+    <p data-lang="en">Digitised manuals, matches, players, notes, stats, the images from your visual queries and game cover images are stored only on your own device, not on our servers. When you delete your account from the app, this content is also erased from your device. The photos you attach to a match come from your gallery or camera: the app does not copy them, so the original image remains in your gallery. If you uninstall TrueRules without deleting your account, local content is removed with the app, but your account remains until you delete it.</p>
     <div class="divider"></div>
     <h2 data-lang="es">7. Seguridad</h2>
     <h2 data-lang="en">7. Security</h2>
@@ -242,8 +286,8 @@
     <div class="divider"></div>
     <h2 data-lang="es">8. Eliminación de cuenta</h2>
     <h2 data-lang="en">8. Account deletion</h2>
-    <p data-lang="es">Puedes eliminar tu cuenta desde <strong>Ajustes → Cuenta → Eliminar cuenta y datos</strong> en la app. Si tienes una suscripción activa o en pausa, primero debes cancelarla desde Google Play — mientras exista una suscripción activa o pausada, no es posible eliminar la cuenta. Una vez cancelada, la eliminación es irreversible: tu credencial de acceso se borra de inmediato, y tus registros de uso y suscripciones se conservan de forma indefinida pero desvinculados de tu identidad, según se explica en la sección 6. El contenido almacenado localmente en tu dispositivo (manuales, partidas, estadísticas) no se ve afectado por esta acción — consulta la sección 6.</p>
-    <p data-lang="en">You can delete your account from <strong>Settings → Account → Delete account and data</strong> in the app. If you have an active or paused subscription, you must first cancel it via Google Play — account deletion is not possible while a subscription is active or paused. Once cancelled, deletion is irreversible: your access credential is removed immediately, and your usage and subscription records are kept indefinitely but disconnected from your identity, as explained in section 6. Content stored locally on your device (manuals, matches, stats) is not affected by this action — see section 6.</p>
+    <p data-lang="es">Puedes eliminar tu cuenta desde <strong>Ajustes → Cuenta → Eliminar cuenta y datos</strong> en la app. Si tienes una suscripción activa o en pausa en Google Play, primero debes cancelarla allí: mientras exista una suscripción activa o pausada, no es posible eliminar la cuenta, para que no se te siga cobrando por una cuenta que ya no podrías gestionar. Una vez cancelada, la eliminación es irreversible: tu credencial de acceso se borra de inmediato, el contenido local se borra de tu dispositivo y en nuestros servidores solo se conserva lo indicado en la sección 6, durante los plazos allí indicados.</p>
+    <p data-lang="en">You can delete your account from <strong>Settings → Account → Delete account and data</strong> in the app. If you have an active or paused subscription on Google Play, you must first cancel it there: account deletion is not possible while a subscription is active or paused, so that you are not charged for an account you could no longer manage. Once cancelled, deletion is irreversible: your access credential is removed immediately, local content is erased from your device, and on our servers we keep only what is described in section 6, for the periods stated there.</p>
     <p data-lang="es">Si no puedes acceder a la app, escríbenos a <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
     <p data-lang="en">If you cannot access the app, write to us at <a href="mailto:truerulesgames@gmail.com">truerulesgames@gmail.com</a>.</p>
     <div class="divider"></div>
