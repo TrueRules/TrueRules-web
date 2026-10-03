@@ -149,9 +149,10 @@
        (b) El contenido local SÍ se borra al eliminar la cuenta desde la
            app: claves de AsyncStorage y, desde la build de octubre 2026,
            también las carpetas de páginas, portadas, imágenes de
-           consultas, cómics y embeddings. Las fotos de partidas son
-           referencias a la galería o la cámara del usuario: la imagen
-           original sigue en su galería. Publicar esta versión junto con
+           consultas, cómics, embeddings y fotos de partidas. Las fotos de
+           partidas se guardan como copia dentro de la app (match-photos/);
+           si se eligieron de la galería, el original sigue allí. Publicar
+           esta versión junto con
            esa build, no antes.
        (c) El bloqueo por suscripción activa o pausada se comprueba
            también contra RevenueCat (estado real en Google Play).
@@ -274,8 +275,8 @@
     </ul>
     <p data-lang="es">Este identificador y los registros asociados son datos personales seudonimizados, no anónimos, y por tanto siguen sujetos al RGPD. Los datos técnicos de consumo del servicio se conservan de forma anónima, sin relación con ninguna persona.</p>
     <p data-lang="en">This identifier and the associated records are pseudonymised personal data, not anonymous data, and therefore remain subject to the GDPR. Technical data on service consumption is kept anonymously, not linked to any person.</p>
-    <p data-lang="es">Los manuales digitalizados, partidas, jugadores, notas, estadísticas, las imágenes de tus consultas visuales y las portadas de los juegos se almacenan únicamente en tu propio dispositivo, no en nuestros servidores. Al eliminar tu cuenta desde la app, este contenido también se borra de tu dispositivo. Las fotografías que adjuntas a una partida proceden de tu galería o de tu cámara: la app no las copia, así que la imagen original sigue en tu galería. Si desinstalas TrueRules sin eliminar tu cuenta, el contenido local se borra con la app, pero tu cuenta sigue existiendo hasta que la elimines.</p>
-    <p data-lang="en">Digitised manuals, matches, players, notes, stats, the images from your visual queries and game cover images are stored only on your own device, not on our servers. When you delete your account from the app, this content is also erased from your device. The photos you attach to a match come from your gallery or camera: the app does not copy them, so the original image remains in your gallery. If you uninstall TrueRules without deleting your account, local content is removed with the app, but your account remains until you delete it.</p>
+    <p data-lang="es">Los manuales digitalizados, partidas, jugadores, notas, estadísticas, las imágenes de tus consultas visuales y las portadas de los juegos se almacenan únicamente en tu propio dispositivo, no en nuestros servidores. Al eliminar tu cuenta desde la app, este contenido también se borra de tu dispositivo. Las fotografías que adjuntas a una partida se guardan como copia dentro de la app y también se borran. Si la elegiste de tu galería, el original sigue allí; si la hiciste con la cámara desde la app, la única copia es la de la app. Si desinstalas TrueRules sin eliminar tu cuenta, el contenido local se borra con la app, pero tu cuenta sigue existiendo hasta que la elimines.</p>
+    <p data-lang="en">Digitised manuals, matches, players, notes, stats, the images from your visual queries and game cover images are stored only on your own device, not on our servers. When you delete your account from the app, this content is also erased from your device. The photos you attach to a match are stored as a copy inside the app and are also erased. If you picked a photo from your gallery, the original remains there; if you took it with the camera from the app, the app's copy is the only one. If you uninstall TrueRules without deleting your account, local content is removed with the app, but your account remains until you delete it.</p>
     <div class="divider"></div>
     <h2 data-lang="es">7. Seguridad</h2>
     <h2 data-lang="en">7. Security</h2>
